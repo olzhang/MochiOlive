@@ -14,9 +14,9 @@ GET, PUT, DELETE: <host url>/v1/restaurants/<primary key>/
 #### Yelp Client Usage
 
 - Step 1: Instantiate 
-- Example: client = YelpClient()
+        Example: client = YelpClient()
 
 - Step 2: get data
-- Example: data = client.get_all_sets(keys, 200) 
-- Note: 200 in the example in the number of data points you want to get
+        Example: data = client.get_all_sets(keys, 200) 
+        Note: 200 in the example in the number of data points you want to get
 
