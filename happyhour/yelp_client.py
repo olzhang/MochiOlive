@@ -54,6 +54,8 @@ class YelpClient(object):
 
 		return a_set
 
+class TranslatePostYelp(object):
+
 	def post_all_to_database(self):
 		"""
 		Post to database using data from data.json file
@@ -109,7 +111,8 @@ class YelpClient(object):
 # 	print len(data[u'businesses'])
 # 	with open('data.json', 'w') as outfile:
 # 		json.dump(data, outfile, indent=2)
-# 	client.post_all_to_database()
+# 	post_yelp = TranslatePostYelp()
+# 	post_yelp.post_all_to_database()
 #
 # if __name__=="__main__":
 # 	main()
