@@ -59,18 +59,14 @@ class YelpClient(object):
 		Post to database using data from data.json file
 		:return: String of status
 		"""
-		list_failed_posts = []
 		with open('data.json') as data_file:
 			data = json.load(data_file)
 		for restaurant in data['businesses']:
 			formatted_data = self.format_data(restaurant)
 			post = self.post_to_database(formatted_data)
 			if not post:
-				list_failed_posts.append(formatted_data)
-		if list_failed_posts:
-			print "The following data could not be posted: " + ', '.join(list_failed_posts)
-		else:
-			print "Success"
+				print "Could not post: "
+				pprint(formatted_data)
 
 	def format_data(self, restaurant):
 		"""
@@ -81,13 +77,16 @@ class YelpClient(object):
 		name = restaurant['name']
 		address_list = restaurant['location']['display_address']
 		address = " ".join(address_list)
-		phone_number = restaurant['phone']
+		if 'phone' in restaurant:
+			phone_number = restaurant['phone']
+		else:
+			phone_number = ""
 		rating = restaurant['rating']
 		location_lat = restaurant['location']['coordinate']['latitude']
 		location_long = restaurant['location']['coordinate']['longitude']
 		image_url = restaurant['image_url']
 		data = {'name': name, 'address': address, 'phone_number': phone_number,
-				'rating': rating, 'location_lat': location_lat, 'location_long': location_long,
+				'rating': str(rating), 'location_lat': str(location_lat), 'location_long': str(location_long),
 				'image_url': image_url}
 		return data
 
@@ -110,6 +109,7 @@ class YelpClient(object):
 # 	print len(data[u'businesses'])
 # 	with open('data.json', 'w') as outfile:
 # 		json.dump(data, outfile, indent=2)
-
+# 	client.post_all_to_database()
+#
 # if __name__=="__main__":
 # 	main()
