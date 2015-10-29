@@ -20,9 +20,9 @@ class YelpClient(object):
 		# PRE: keys: dictionary of yelp keys; limit: how many data points do you want
 		# POST: nothing 
 		# RETURNS: JSON data containing all the data points 
-		data = self.get_single_data_set(keys, 0)
+		data = self._get_single_data_set(keys, 0)
 		for i in range(20, limit, 20):
-			next_set = self.get_single_data_set(keys, i)
+			next_set = self._get_single_data_set(keys, i)
 			data[u'businesses'].extend(next_set[u'businesses'])
 		return data
 
