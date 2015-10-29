@@ -28,12 +28,12 @@ class YelpClient(object):
 		for i in range(20, limit, 20):
 			next_set = self._get_single_data_set(keys, i)
 			data[u'businesses'].extend(next_set[u'businesses'])
-		return data
+		return data[u'businesses']
 
 
 	def _get_single_data_set(self, keys, offset):
 		# PRE: keys: dictionary of yelp keys; 
-		#	   offset: the next n set of data points we want (each set in 20 data points big)
+		#      offset: the next n set of data points we want (each set in 20 data points big)
 		# POST: nothing 
 		# RETURNS: 20 data points in JSON format as sepcified by the params
 		session = rauth.OAuth1Session(
@@ -56,14 +56,12 @@ class YelpClient(object):
 
 class TranslatePostYelp(object):
 
-	def post_all_to_database(self):
+	def post_all_to_database(self, data):
 		"""
 		Post to database using data from data.json file
 		:return: String of status
 		"""
-		with open('data.json') as data_file:
-			data = json.load(data_file)
-		for restaurant in data['businesses']:
+		for restaurant in data:
 			formatted_data = self.format_data(restaurant)
 			post = self.post_to_database(formatted_data)
 			if not post:
@@ -108,11 +106,9 @@ class TranslatePostYelp(object):
 # def main():
 # 	client = YelpClient()
 # 	data = client.get_all_sets(keys, 200)
-# 	print len(data[u'businesses'])
-# 	with open('data.json', 'w') as outfile:
-# 		json.dump(data, outfile, indent=2)
+# 	print len(data)
 # 	post_yelp = TranslatePostYelp()
-# 	post_yelp.post_all_to_database()
-#
+# 	post_yelp.post_all_to_database(data)
+
 # if __name__=="__main__":
 # 	main()
