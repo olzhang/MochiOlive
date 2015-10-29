@@ -1,5 +1,6 @@
-import rauth 
-import pprint
+import rauth
+import requests
+from pprint import pprint
 import json
 
 # Comment out main file at the bottom to test if it works
@@ -13,13 +14,16 @@ keys = {
 	'TOKEN_SECRET': 'QBXSiN0Eqsaq-Xc5o0-MpVT03r4',
 }
 
+webapp_url = "http://127.0.0.1:8000"
+api_post_url = "/v1/restaurants/"
+
 
 class YelpClient(object):
 
 	def get_all_sets(self, key, limit):
 		# PRE: keys: dictionary of yelp keys; limit: how many data points do you want
-		# POST: nothing 
-		# RETURNS: JSON data containing all the data points 
+		# POST: nothing
+		# RETURNS: JSON data containing all the data points
 		data = self._get_single_data_set(keys, 0)
 		for i in range(20, limit, 20):
 			next_set = self._get_single_data_set(keys, i)
@@ -49,6 +53,56 @@ class YelpClient(object):
 		session.close()
 
 		return a_set
+
+	def post_all_to_database(self):
+		"""
+		Post to database using data from data.json file
+		:return: String of status
+		"""
+		list_failed_posts = []
+		with open('data.json') as data_file:
+			data = json.load(data_file)
+		for restaurant in data['businesses']:
+			formatted_data = self.format_data(restaurant)
+			post = self.post_to_database(formatted_data)
+			if not post:
+				list_failed_posts.append(formatted_data)
+		if list_failed_posts:
+			print "The following data could not be posted: " + ', '.join(list_failed_posts)
+		else:
+			print "Success"
+
+	def format_data(self, restaurant):
+		"""
+		Format and parse data based on webapp's database.
+		:param restaurant: data for restaurant
+		:return: formatted data of restaurant
+		"""
+		name = restaurant['name']
+		address_list = restaurant['location']['display_address']
+		address = " ".join(address_list)
+		phone_number = restaurant['phone']
+		rating = restaurant['rating']
+		location_lat = restaurant['location']['coordinate']['latitude']
+		location_long = restaurant['location']['coordinate']['longitude']
+		image_url = restaurant['image_url']
+		data = {'name': name, 'address': address, 'phone_number': phone_number,
+				'rating': rating, 'location_lat': location_lat, 'location_long': location_long,
+				'image_url': image_url}
+		return data
+
+	def post_to_database(self, data):
+		"""
+		post data to database
+		:param data: data to post
+		:return: boolean on whether or not post was successful
+		"""
+		post_url = webapp_url + api_post_url
+		r = requests.post(post_url, data=data)
+		if r.status_code == 201:
+			return True
+		else:
+			return False
 
 # def main():
 # 	client = YelpClient()
