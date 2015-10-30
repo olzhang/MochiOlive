@@ -60,15 +60,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">MochiOlive Happy Hour</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#" class="mochi-olive-border">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="?page=map" class="mochi-olive-border">Map</a></li>
+            <li><a href="?page=table">Table</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">whatever else we need <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -95,14 +94,50 @@
       <img class="title-image" src="/static/images/mochi.jpg"/>
       <!-- Load Map -->
       <div id="map"></div>
+<<<<<<< HEAD
     <script type="text/javascript" src="/static/js/google-maps.js"></script>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&">
+=======
+      <script type="text/javascript">
+        var map;
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 49.25, lng: -123.1},
+            zoom: 10
+          });
+        }
+
+>>>>>>> Display table with the restaurant name, address, phone number and ratings(sorted from highest to lowest ratings)
     </script>
     <script type="text/javascript">
       var mapCanvas = document.getElementById("map");
       var googleMap = new Mapping.GoogleMap(mapCanvas);
     </script>
+<<<<<<< HEAD
+=======
+
+ <table style="width:50%" align='right'>
+  <thead>
+      <tr>
+        <th>Restaurant name</th>
+        <th>Restaurant address</th>
+        <th>Restaurant phone number</th>
+        <th>Restaurant rating</th>
+      </tr>
+    </thead>
+  <tbody>
+       {% for restaurant in restaurants %}
+      <tr>
+        <td>{{ restaurant.name }}</td>
+        <td>{{ restaurant.address }}</td> 
+        <td>{{ restaurant.phone_number }}</td>
+        <td>{{ restaurant.rating }}</td>
+      </tr>
+    {% endfor %}
+ </tbody>
+</table>
+>>>>>>> Display table with the restaurant name, address, phone number and ratings(sorted from highest to lowest ratings)
     </div> <!-- /container -->
 
 
