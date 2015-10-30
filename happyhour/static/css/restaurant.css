@@ -2,6 +2,7 @@ body {
   min-height: 2000px;
   padding-top: 70px;
 }
+
 #map { 
 	position: absolute;
 	height: 100%;  
@@ -33,9 +34,11 @@ body {
 	width: 60px;
 	padding-bottom: 20px;
 }
+
+
 .restaurant_table_container{
 	border: 1px solid #999;
-	position: absolute;
+	position: relative;
 	height: 100%;  
 	width: 45%;
 	margin-left: 42%;
@@ -69,3 +72,18 @@ thead {
 .navbar-right.navbar-logo-right{
 	margin-right: -20%;
 }
+
+
+@media all and (min-width:1000px){
+
+	#map { 
+		margin-left: -10%;
+	}
+
+	.restaurant_table_container{
+		position: absolute;
+		margin-left: 37%;
+		margin-right: 10%;
+	}
+}
+
