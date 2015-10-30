@@ -5,8 +5,8 @@ body {
 #map { 
 	position: absolute;
 	height: 100%;  
-	width: 50%;
-	margin-left: -10%;
+	width: 45%;
+	margin-left: -8%;
 	border-radius: 5px;
 }
 .center-image {
@@ -37,8 +37,9 @@ body {
 	border: 1px solid #999;
 	position: absolute;
 	height: 100%;  
-	width: 50%;
-	margin-left: 45%;
+	width: 45%;
+	margin-left: 42%;
+	border-radius: 5px;
 	overflow:auto;
 }
 

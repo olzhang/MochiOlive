@@ -97,9 +97,9 @@
       <img class="title-image" src="/static/images/olive.jpg"/>
       <!-- Load Map -->
       <div id="map"></div>
-    <script type="text/javascript" src="/static/js/google-maps.js"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&">
+      <script type="text/javascript" src="/static/js/google-maps.js"></script>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&">
       <script type="text/javascript">
         var map;
         function initMap() {
@@ -108,16 +108,14 @@
             zoom: 10
           });
         }
+      </script>
+      <script type="text/javascript">
+        var mapCanvas = document.getElementById("map");
+        var googleMap = new Mapping.GoogleMap(mapCanvas);
+        var marker = googleMap.marker();
+      </script>
 
-    </script>
-    <script type="text/javascript">
-      var mapCanvas = document.getElementById("map");
-      var googleMap = new Mapping.GoogleMap(mapCanvas);
-      var marker = googleMap.marker();
-    </script>
-
- {% block restaurant_table %}
- {% endblock %}
+      {% block restaurant_table %} {% endblock %}
     </div> <!-- /container -->
 
 
