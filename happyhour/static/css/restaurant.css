@@ -38,3 +38,26 @@ body {
 	width: 100px;
 	padding-bottom: 20px;
 }
+
+.restaurant_table_container{
+	border: 1px solid #999;
+	position: absolute;
+	height: 100%;  
+	width: 50%;
+	margin-left: 45%;
+	overflow:auto;
+}
+
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+
+tbody tr:hover {
+  background-color: lightyellow;
+}
+
+thead {
+	background-color: rgba(60, 118, 61, 0.32);
+}
+

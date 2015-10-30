@@ -1,1 +1,26 @@
 {% extends "base.html" %}
+
+{% block restaurant_table %}
+<div class="restaurant_table_container">
+<table class="restaurant_table">
+  <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone number</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+  <tbody>
+       {% for restaurant in restaurants %}
+      <tr>
+        <td>{{ restaurant.name }}</td>
+        <td>{{ restaurant.address }}</td> 
+        <td>{{ restaurant.phone_number }}</td>
+        <td>{{ restaurant.rating }}</td>
+      </tr>
+    {% endfor %}
+ </tbody>
+</table>
+</div>
+{% endblock %}

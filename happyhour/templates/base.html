@@ -113,26 +113,8 @@
       var marker = googleMap.marker();
     </script>
 
- <table style="width:50%" align='right'>
-  <thead>
-      <tr>
-        <th>Restaurant name</th>
-        <th>Restaurant address</th>
-        <th>Restaurant phone number</th>
-        <th>Restaurant rating</th>
-      </tr>
-    </thead>
-  <tbody>
-       {% for restaurant in restaurants %}
-      <tr>
-        <td>{{ restaurant.name }}</td>
-        <td>{{ restaurant.address }}</td> 
-        <td>{{ restaurant.phone_number }}</td>
-        <td>{{ restaurant.rating }}</td>
-      </tr>
-    {% endfor %}
- </tbody>
-</table>
+ {% block restaurant_table %}
+ {% endblock %}
     </div> <!-- /container -->
 
 
