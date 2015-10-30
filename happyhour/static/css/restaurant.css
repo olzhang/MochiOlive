@@ -77,13 +77,13 @@ thead {
 @media all and (min-width:1000px){
 
 	#map { 
-		margin-left: -10%;
+		margin-left: -170px;
 	}
 
 	.restaurant_table_container{
 		position: absolute;
-		margin-left: 37%;
-		margin-right: 10%;
+		margin-left: 600px;
+		margin-right: 5px;
 	}
 }
 
