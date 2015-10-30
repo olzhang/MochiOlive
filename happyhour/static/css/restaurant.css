@@ -1,8 +1,3 @@
-/*html, body { 
-	height: 100%; 
-	margin: 0; 
-	padding: 0;
-}*/
 body {
   min-height: 2000px;
   padding-top: 70px;
@@ -35,10 +30,9 @@ body {
     text-align: center;
 }
 .title-image {
-	width: 100px;
+	width: 60px;
 	padding-bottom: 20px;
 }
-
 .restaurant_table_container{
 	border: 1px solid #999;
 	position: absolute;
@@ -60,4 +54,17 @@ tbody tr:hover {
 thead {
 	background-color: rgba(60, 118, 61, 0.32);
 }
-
+.olive-navbar-image {
+	width: 30px;
+	padding-bottom: 20px;
+}
+.navbar-image {
+    margin-left: -200%;
+    margin-top: -35%;
+}
+.container > .navbar-header > .navbar-title {
+	margin-left: -50%;
+}
+.navbar-right.navbar-logo-right{
+	margin-right: -20%;
+}
