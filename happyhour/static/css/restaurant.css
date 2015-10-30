@@ -7,7 +7,7 @@ body {
 	position: absolute;
 	height: 100%;  
 	width: 45%;
-	margin-left: -8%;
+	margin-left: -170px;
 	border-radius: 5px;
 }
 .center-image {
@@ -38,10 +38,11 @@ body {
 
 .restaurant_table_container{
 	border: 1px solid #999;
-	position: relative;
+	position: absolute;
 	height: 100%;  
 	width: 45%;
-	margin-left: 42%;
+	margin-left: 600px;
+	margin-right: 5px;
 	border-radius: 5px;
 	overflow:auto;
 }
@@ -73,17 +74,4 @@ thead {
 	margin-right: -20%;
 }
 
-
-@media all and (min-width:1000px){
-
-	#map { 
-		margin-left: -170px;
-	}
-
-	.restaurant_table_container{
-		position: absolute;
-		margin-left: 600px;
-		margin-right: 5px;
-	}
-}
 
