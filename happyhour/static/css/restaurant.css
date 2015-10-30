@@ -1,13 +1,15 @@
 body {
-  min-height: 2000px;
+  height: 100%;
+  width: 100%;
   padding-top: 70px;
+  margin: 0;
 }
 
 #map { 
 	position: absolute;
 	height: 100%;  
-	width: 45%;
-	margin-left: -170px;
+    width: 45%;
+    margin-left: 2%;
 	border-radius: 5px;
 }
 .center-image {
@@ -37,12 +39,12 @@ body {
 
 
 .restaurant_table_container{
-	border: 1px solid #999;
+	/*border: 1px solid #999;*/
 	position: absolute;
-	height: 100%;  
-	width: 45%;
-	margin-left: 600px;
-	margin-right: 5px;
+	/*width: 50%;*/
+	/*height: 100%;  */
+	/*width: 45%;*/
+	/*margin-left: 42%;*/
 	border-radius: 5px;
 	overflow:auto;
 }
@@ -74,5 +76,40 @@ thead {
 	margin-right: -20%;
 }
 
-/*comment*/
 
+@media all and (min-width:1000px){
+
+	#map { 
+		/*margin-left: -10%;*/
+	}
+
+	.restaurant_table_container{
+		position: absolute;
+		/*margin-left: 37%;*/
+		/*margin-right: 10%;*/
+	}
+}
+
+#wrapper {
+     width: 100%;
+     margin: 0 auto;
+}
+#leftcolumn, #rightcolumn {
+    border: 1px solid white;
+    float: left;
+    max-height: 750px;
+}
+#leftcolumn {
+    width: 50%;
+    overflow: auto;
+    height: 100%;
+    border: 1px solid #999;
+}
+
+#rightcolumn {
+     width: 50%;
+}
+.container-mochi {
+	padding-left: 2%;
+	padding-right: 2%;
+}
