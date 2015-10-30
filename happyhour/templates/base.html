@@ -93,22 +93,16 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <img class="title-image" src="/static/images/mochi.jpg"/>
+      <!-- Load Map -->
       <div id="map"></div>
-      <script type="text/javascript">
-
-        var map;
-        function initMap() {
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 49.25, lng: -123.1},
-            zoom: 10
-          });
-        }
-
+    <script type="text/javascript" src="/static/js/google-maps.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&">
     </script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&callback=initMap">
+    <script type="text/javascript">
+      var mapCanvas = document.getElementById("map");
+      var googleMap = new Mapping.GoogleMap(mapCanvas);
     </script>
-
     </div> <!-- /container -->
 
 
