@@ -33,7 +33,7 @@ body {
     text-align: center;
 }
 .title-image {
-	width: 60px;
+	width: 50px;
 	padding-bottom: 20px;
 }
 td, th {
@@ -53,8 +53,7 @@ thead {
 	padding-bottom: 20px;
 }
 .navbar-image {
-    margin-left: -200%;
-    margin-top: -35%;
+    position: absolute;
 }
 .container > .navbar-header > .navbar-title {
 	margin-left: -50%;
