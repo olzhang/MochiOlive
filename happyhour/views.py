@@ -27,9 +27,8 @@ class RestaurantList(APIView):
                                                     rating=request.data['rating'],
                                                     location_lat=request.data['location_lat'],
                                                     location_long=request.data['location_long'],
-                                                    image_url=request.data['image_url'])\
-                .exists()
-            if not restaurants:
+                                                    image_url=request.data['image_url'])
+            if not restaurants.exists():
                 serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -80,7 +80,7 @@ class TranslatePostYelp(object):
 		if 'phone' in restaurant:
 			phone_number = restaurant['phone']
 		else:
-			phone_number = ""
+			phone_number = None
 		rating = restaurant['rating']
 		location_lat = restaurant['location']['coordinate']['latitude']
 		location_long = restaurant['location']['coordinate']['longitude']
