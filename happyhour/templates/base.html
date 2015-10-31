@@ -1,30 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <link href="/static/css/restaurant.css" rel="stylesheet">
-    <title>Happy Hour</title>
-  </head>
-  <body>
-    <h1 class="title">Happy Hours with MochiOlive</h1>
-    <div id="map"></div>
-    <script type="text/javascript">
-
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 49.25, lng: -123.1},
-          zoom: 10
-        });
-      }
-
-    </script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&callback=initMap">
-    </script>
-  </body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,7 +25,9 @@
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top mochi-olive-border">
-        <div><img class="title-image navbar-image" src="/static/images/mochi-navbar.jpg" title="MochiOlive Happy Hour"/></div>
+        <div><img class="title-image navbar-image" src="/static/images/mochi-navbar.jpg" title="MochiOlive Happy Hour"/>
+          <a class="navbar-brand navbar-title" href="#">MochiOlive Happy Hour</a>
+        </div>
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -61,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand navbar-title" href="#">MochiOlive Happy Hour</a>
+          <!-- <a class="navbar-brand navbar-title" href="#">MochiOlive Happy Hour</a> -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -102,20 +77,11 @@
       <!-- Load Map -->
       <script type="text/javascript" src="/static/js/google-maps.js"></script>
       <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&"></script>
+
       <script type="text/javascript">
-        var map;
-        function initMap() {
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 49.25, lng: -123.1},
-            zoom: 10
-          });
-        }
-      </script>
-      <script type="text/javascript">
-        var mapCanvas = document.getElementById("map");
-        var googleMap = new Mapping.GoogleMap(mapCanvas);
-        var marker = googleMap.marker();
+        initGoogleMap();
+        markPoint();
       </script>
 
     </div> <!-- /container -->
