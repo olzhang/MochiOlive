@@ -11,7 +11,7 @@ function initGoogleMap() {
 }
 
 //attach the infowindow to marker
-function bindInfoWindow(marker, map, infowindow, description) {
+function bindInfoWindow(marker, map, infowindow, restaurant) {
     google.maps.event.addListener(marker, 'click', function() {
         closePreviousInfoWindow();
         if(prev_infowindow == infowindow) {
@@ -20,19 +20,42 @@ function bindInfoWindow(marker, map, infowindow, description) {
            return;
         }
         prev_infowindow = infowindow;
-        infowindow.setContent(description);
+        infowindow.setContent(setInfo(restaurant));
         infowindow.open(map, marker);
     });
 
     google.maps.event.addListener(map, 'click', function() {
         infowindow.close();
     });
+
+    /* This will likely be needed if we want to customize the ui of indowindow more
+    google.maps.event.addListener(infowindow, 'domready', function() {
+    var iwOuter = $('.gm-style-iw');
+    iwOuter.parent().addClass('infowindow_parent');
+    });
+    */
+}
+
+
+function setInfo(restaurant) {
+ return(
+  '<div id="iw_container">' +
+    '<div class="iw_title">'+ restaurant.name+'</div>' +
+    '<div class="iw_content">' +
+      '<img class="iw_pic" src="'+restaurant.image_url+'"></img>'+
+      '<p class="iw_info">' +
+          '<span class="col">Address : </span>' + restaurant.address +'<br>' +
+          '<span class="col">Tell : </span>'+ restaurant.phone_number + '<br>' +
+          '<span class="col">Rating : </span>'+restaurant.rating +
+      '</p>'+
+    '</div>' +
+  '</div>');
 }
 
 function closePreviousInfoWindow(){
-     if( prev_infowindow ) {
-           prev_infowindow.close();
-        }
+  if( prev_infowindow ) {
+    prev_infowindow.close();
+  }
 }
 
 // Mark all happy hour restaurants on map
@@ -50,7 +73,7 @@ function markPoint(){
         var infowindow =  new google.maps.InfoWindow();
         // marker.setMap(map);
 
-        bindInfoWindow(marker, map, infowindow, restaurant.name);
+        bindInfoWindow(marker, map, infowindow, restaurant);
         markers.push(marker);
   };
     var cluster = new MarkerClusterer(map, markers);

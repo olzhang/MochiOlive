@@ -1,0 +1,29 @@
+.iw_title {
+   font-family: 'Lucida Sans Unicode', sans-serif;
+   font-size: 22px;
+   font-weight: 400;
+   padding: 10px;
+   background-color: #43Cd80;
+   color: white;
+   margin: 1px;
+   margin-bottom: 5px;
+   border-radius: 2px 2px 0 0;
+}
+
+.iw_pic{
+    float: left;
+    left: 0px;
+    margin-right: 5px;
+}
+
+.iw_info{
+    font-size: 16px;
+    margin: 0,0,5,5px;
+    text-align:left;
+    padding-top: 5px;
+}
+
+.iw_info .col{
+     font-weight: bold;
+     font-size: 18px;
+}
