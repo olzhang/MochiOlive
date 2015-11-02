@@ -16,7 +16,7 @@ body {
 	text-align:center;
 }
 .mochi-olive-border {
-	background-color: rgba(60, 118, 61, 0.32);
+	background-color: rgba(197, 210, 193, 1);
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default 
 .navbar-nav > .active > a:hover, .navbar-default 
@@ -46,7 +46,7 @@ tbody tr:hover {
 }
 
 thead {
-	background-color: rgba(60, 118, 61, 0.32);
+	background-color: rgba(197, 210, 193, 1);
 }
 .olive-navbar-image {
 	width: 30px;
