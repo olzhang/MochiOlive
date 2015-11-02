@@ -45,7 +45,7 @@ function setInfo(restaurant) {
       '<img class="iw_pic" src="'+restaurant.image_url+'"></img>'+
       '<p class="iw_info">' +
           '<span class="col">Address : </span>' + restaurant.address +'<br>' +
-          '<span class="col">Tell : </span>'+ restaurant.phone_number + '<br>' +
+          '<span class="col">Phone : </span>'+ restaurant.phone_number + '<br>' +
           '<span class="col">Rating : </span>'+restaurant.rating +
       '</p>'+
     '</div>' +
