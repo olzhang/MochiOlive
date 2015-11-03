@@ -8,8 +8,8 @@ body {
 #map { 
 	position: absolute;
 	height: 100%;  
-    width: 45%;
-    margin-left: 2%;
+  width: 45%;
+  margin-left: 3%;
 	border-radius: 5px;
 }
 .center-image {
@@ -71,10 +71,11 @@ thead {
     max-height: 750px;
 }
 #leftcolumn {
-    width: 50%;
+    width: 48%;
     overflow: auto;
     height: 100%;
     border: 1px solid #999;
+    margin-right: 2%;
 }
 
 #rightcolumn {
