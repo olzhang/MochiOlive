@@ -85,3 +85,6 @@ thead {
 	padding-left: 2%;
 	padding-right: 2%;
 }
+th {
+  text-align: center;
+}
