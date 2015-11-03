@@ -55,8 +55,8 @@ thead {
 .navbar-image {
     position: absolute;
 }
-.container > .navbar-header > .navbar-title {
-	/*margin-left: -50%;*/
+.navbar-title {
+	margin-left: 40px;
 }
 .navbar-right.navbar-logo-right{
 	margin-right: -20%;
