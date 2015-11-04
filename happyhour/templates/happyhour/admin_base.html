@@ -27,7 +27,7 @@
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top mochi-olive-border">
       <img class="title-image navbar-image" src="/static/images/mochi-navbar.jpg" title="MochiOlive Happy Hour"/>
-      <a class="navbar-brand navbar-title" href="#">MochiOlive Happy Hour</a>
+      <a class="navbar-brand navbar-title" href="#">MochiOlive Happy Hour Admin Dashboard</a>
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -58,34 +58,46 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="../navbar/">Default</a></li>
             <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/happy-hour-restaurants/">Logout <span class="sr-only">(current)</span></a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container-mochi center-image">
-      <img class="title-image" src="/static/images/olive.jpg"/>
+      <div id='filter'>
+        <a class="btn btn-info" role="button" href="filter">Filter</a>
+      </div> 
         <div id="wrapper">
-          <div id="leftcolumn">
-            {% block restaurant_table %} {% endblock %}
-          </div>
-          <div id="rightcolumn"><div id="map"></div></div>
+          <table class="restaurant_admin_table">
+            <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Phone number</th>
+                  <th>Rating</th>
+                  <th>Location lat</th>
+                  <th>Location long</th>
+                  <th>Thumbnail image</th>
+                </tr>
+              </thead>
+            <tbody>
+              {{restaurants}}
+                 {% for restaurant in object_list %}
+                <tr>
+                  <td>{{ restaurant.name }}</td>
+                  <td>{{ restaurant.address }}</td> 
+                  <td>{{ restaurant.phone_number }}</td>
+                  <td>{{ restaurant.rating }}</td>
+                  <td>{{ restaurant.location_lat }}</td> 
+                  <td>{{ restaurant.location_long }}</td>
+                  <td><img src="{{ restaurant.image_url }}"/></td>
+                </tr>
+              {% endfor %}
+           </tbody>
+          </table>
         </div>
-
-      <!-- Load Map and Markers -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <script type="text/javascript" src="/static/js/markerclusterer.js"></script>
-      <script type="text/javascript" src="/static/js/google-maps.js"></script>
-      <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&"></script>
-      <script type="text/javascript">
-        initGoogleMap();
-        markPoint();
-      </script>
     </div> <!-- /container -->
-
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
