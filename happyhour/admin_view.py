@@ -28,3 +28,4 @@ class RestaurantFilter(ListView):
 	    context = super(RestaurantFilter, self).get_context_data(**kwargs)
 	    self.queryset.delete()
 	    return context
+
