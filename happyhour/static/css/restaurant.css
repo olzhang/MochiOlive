@@ -88,3 +88,20 @@ thead {
 th {
   text-align: center;
 }
+
+#admin_leftcolumn, #admin_rightcolumn {
+    border: 1px solid white;
+    float: left;
+    max-height: 750px;
+}
+#admin_leftcolumn {
+    width: 48%;
+    overflow: auto;
+    height: 100%;
+    border: 1px solid #999;
+    margin-right: 2%;
+}
+
+#admin_rightcolumn {
+     width: 50%;
+}

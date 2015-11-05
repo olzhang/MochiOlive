@@ -39,25 +39,7 @@
           <!-- <a class="navbar-brand navbar-title" href="#">MochiOlive Happy Hour</a> -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="?page=map" class="mochi-olive-border">Map</a></li>
-            <li><a href="?page=table">Table</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">whatever else we need <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">Welcome </a></li>
-              </ul>
-            </li>
-          </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
             <li class="active"><a href="{% url 'django.contrib.auth.views.logout' %}">Logout <span class="sr-only">(current)</span></a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -68,7 +50,11 @@
       <div id='filter'>
         <a class="btn btn-info" role="button" href="filter">Filter</a>
       </div> 
-        <div id="wrapper">
+      <div id="wrapper">
+          <div id="admin_leftcolumn">
+             <p>placeholder </p>
+          </div>
+        <div id="admin_rightcolumn">
           <table class="restaurant_admin_table">
             <thead>
                 <tr>
