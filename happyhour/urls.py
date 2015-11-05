@@ -10,7 +10,8 @@ urlpatterns = [
     url(r'^happy-hour-restaurants/login/admin$', 'django.contrib.auth.views.login', {'template_name': 'happyhour/login.html'}),
     url(r'^login/admin/$', 'django.contrib.auth.views.login', {'template_name': 'happyhour/login.html'}),
     url(r'^admin/dashboard/$', login_required(admin_view.RestaurantAdmin.as_view()), name='restaurant_list_admin'),
-   	url(r'^admin/dashboard/filter/$', admin_view.RestaurantFilter.as_view()),
+    url(r'^admin/dashboard/filter/$', admin_view.RestaurantFilter.as_view()),
+    url(r'^admin/dashboard/update/$', admin_view.RestaurantUpdate.as_view()),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/happy-hour-restaurants/'})
 ]
 
