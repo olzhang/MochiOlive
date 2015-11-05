@@ -95,13 +95,17 @@ th {
     max-height: 750px;
 }
 #admin_leftcolumn {
-    width: 48%;
+    width: 40%;
     overflow: auto;
     height: 100%;
-    border: 1px solid #999;
-    margin-right: 2%;
 }
 
 #admin_rightcolumn {
      width: 50%;
+}
+
+.admin_button {
+   display:inline-block;
+   margin-right:5px;
+}
 }
