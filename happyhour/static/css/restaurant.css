@@ -70,6 +70,7 @@ thead {
     float: left;
     max-height: 750px;
 }
+
 #leftcolumn {
     width: 48%;
     overflow: auto;
@@ -101,7 +102,9 @@ th {
 }
 
 #admin_rightcolumn {
-     width: 50%;
+    width: 60%;
+    overflow: auto;
+    height: 100%;
 }
 
 .admin_button {
