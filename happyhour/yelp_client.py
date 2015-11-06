@@ -14,7 +14,7 @@ keys = {
 	'TOKEN_SECRET': 'QBXSiN0Eqsaq-Xc5o0-MpVT03r4',
 }
 
-webapp_url = "http://127.0.0.1:8000"
+webapp_url = "http://ec2-52-24-217-78.us-west-2.compute.amazonaws.com:8000"
 api_post_url = "/v1/restaurants/"
 
 
@@ -36,18 +36,14 @@ class YelpClient(object):
 		#      offset: the next n set of data points we want (each set in 20 data points big)
 		# POST: nothing 
 		# RETURNS: 20 data points in JSON format as sepcified by the params
-		session = rauth.OAuth1Session(
-			consumer_key = keys['CONSUMER_KEY'],
-			consumer_secret = keys['CONSUMER_SECRET'],
-			access_token = keys['TOKEN'],
-			access_token_secret = keys['TOKEN_SECRET'])
+		session = rauth.OAuth1Session(consumer_key = keys['CONSUMER_KEY'],consumer_secret = keys['CONSUMER_SECRET'],access_token = keys['TOKEN'],access_token_secret = keys['TOKEN_SECRET'])
 
 		params = {}
 		params["term"] = "happy+hour"
 		params["location"] = "Vancouver+BC+Canada"
 		params["offset"] = offset
 
-		request = session.get("http://api.yelp.com/v2/search", params=params)
+		request = session.get("https://api.yelp.com/v2/search", params=params)
 
 		a_set = request.json()
 		session.close()
@@ -103,12 +99,12 @@ class TranslatePostYelp(object):
 		else:
 			return False
 
-# def main():
-# 	client = YelpClient()
-# 	data = client.get_all_sets(keys, 200)
-# 	print len(data)
-# 	post_yelp = TranslatePostYelp()
-# 	post_yelp.post_all_to_database(data)
+def main():
+	client = YelpClient()
+	data = client.get_all_sets(keys, 200)
+	print len(data)
+	post_yelp = TranslatePostYelp()
+	post_yelp.post_all_to_database(data)
 
-# if __name__=="__main__":
-# 	main()
+if __name__=="__main__":
+	main()
