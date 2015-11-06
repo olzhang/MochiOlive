@@ -83,7 +83,7 @@ function markPoint(){
 function getData(){
     var items = {};
     $.ajax({
-        url: 'http://127.0.0.1:8000/v1/restaurants/',
+        url: 'http://ec2-52-24-217-78.us-west-2.compute.amazonaws.com:8000/v1/restaurants/',
         async: false,
         dataType: 'json',
         success: function (restaurants) {
