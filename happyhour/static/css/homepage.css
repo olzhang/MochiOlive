@@ -1,6 +1,16 @@
 .title-img {
 	max-height: 150px;
 }
-.login-button {
+.lead > .login-button {
 	margin-right: 10px;
+}
+.lead > .button-custom {
+	color: #777;
+}
+.guest-continue {
+	font-size: 16px;
+	color: #555555;
+}
+.img-footer {
+	max-height: 40px;
 }
