@@ -49,6 +49,11 @@ function setInfo(restaurant) {
           '<span class="col">Rating : </span>'+restaurant.rating +
       '</p>'+
     '</div>' +
+    '<div class="btn-group favorites-map">' +
+      '<button type="button" class="btn btn-favorites">' +
+        '<span class="glyphicon glyphicon-plus"></span>  Favorites' + 
+      '</button>' +
+    '</div>' +
   '</div>');
 }
 
