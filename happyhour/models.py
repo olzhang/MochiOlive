@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=200,null=True)
@@ -8,3 +9,14 @@ class Restaurant(models.Model):
     location_lat = models.FloatField(null=True)
     location_long = models.FloatField(null=True)
     image_url = models.URLField(max_length=200, null=True)
+
+class Twitter(models.Model):
+	user_name = models.CharField(max_length=200)
+	user_email = models.CharField(max_length=200)
+
+class Favorites(models.Model):
+	user = models.ForeignKey(User, null=True, blank=True)
+	restaurant = models.ForeignKey(Restaurant)
+	twitter = models.ForeignKey(Twitter, null=True, blank=True)
+
+
