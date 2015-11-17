@@ -62,3 +62,23 @@ class RestaurantDetail(APIView):
         restaurant = self.get_object(pk)
         restaurant.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class FavoriteList(APIView):
+    """
+    GET: list all favorite restaurants of a user
+    POST: add a new favorite restaurant to a user
+    """
+    def get_object(self, user):
+        try: 
+            return Favorites.objects.get(user=user)
+        except Favorite.DoesNotExist:
+            raise Http404
+
+    def get(self, request, user, format=None): 
+        favorites = self.get_object(user)
+        serializer = FavoriteSerializer(favorites)
+        return Response(serializer.data)
+
+
+
+
