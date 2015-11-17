@@ -63,7 +63,7 @@ class RestaurantDetail(APIView):
         restaurant.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class FavoriteList(APIView):
+class UserFavoritesList(APIView):
     """
     GET: list all favorite restaurants of a user
     POST: add a new favorite restaurant to a user
@@ -78,6 +78,19 @@ class FavoriteList(APIView):
         favorites = self.get_object(user)
         serializer = FavoriteSerializer(favorites)
         return Response(serializer.data)
+
+    def post(self, request, user, format=None):
+        serializer = FavoriteSerializer(data=request.data)
+        if serializer.is_valid:
+            favorites = Favorites.objects.filter(name=user, 
+                address=request.data['restaurant'],
+                phone_number=request.data['twitter'])
+            if not favorites.exists():
+                serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 
 
 
