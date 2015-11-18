@@ -2,6 +2,10 @@ mochiolive happy hour
 
 NOTE: run requirements.txt to install all required python packages by running the following command:
         pip install -r requirements.txt
+Please re-run to enable twitter sign in
+
+TODO: For testing locally, the web-url and call back for twitter is pointed to 127.0.0.1:8000
+Need to change this in times of deployment
 
 #### API Endpoints: 
 - Adding a restaurant and getting all restaurants: 
