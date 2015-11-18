@@ -50,8 +50,8 @@ function setInfo(restaurant) {
       '</p>'+
     '</div>' +
     '<div class="btn-group favorites-map">' +
-      '<button type="button" class="btn btn-favorites">' +
-        '<span class="glyphicon glyphicon-plus"></span>  Favorites' + 
+      '<button id="map-fav-' + restaurant.id + '" type="button" class="btn btn-favorites" onclick="addUserFavorite(this.id, 4, 243)">' +
+        '<span class="glyphicon glyphicon-plus"></span><span>  </span><span id="btn-text">Favorite</span>' + 
       '</button>' +
     '</div>' +
   '</div>');
@@ -88,7 +88,7 @@ function markPoint(){
 function getData(){
     var items = {};
     $.ajax({
-        url: 'http://ec2-52-24-217-78.us-west-2.compute.amazonaws.com:8000/v1/restaurants/',
+        url: 'http://127.0.0.1:8000/v1/restaurants/',
         async: false,
         dataType: 'json',
         success: function (restaurants) {
