@@ -4,12 +4,13 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
-urlpatterns = [	
+urlpatterns = [
     url(r'^v1/restaurants/$', views.RestaurantList.as_view()),
     url(r'^v1/restaurants/(?P<pk>[0-9]+)/$', views.RestaurantDetail.as_view()),
-    url(r'^v1/favorites/user/(?P<user>[0-9]+)/$', views.UserFavoritesList.as_view()),    
+    url(r'^v1/favorites/user/(?P<user>[0-9]+)/$', views.UserFavoritesList.as_view()),
     url(r'^v1/favorites/twitter/(?P<twitter>[0-9]+)/$', views.UserFavoritesList.as_view()),
     url(r'^$', TemplateView.as_view(template_name='homepage_base.html')),
+    url(r'^login/user/$', TemplateView.as_view(template_name='happyhour/signup_login.html')),
     url(r'^happy-hour-restaurants/$', restaurant_views.RestaurantPage.as_view(), name='restaurant-base'),
     url(r'^happy-hour-restaurants/login/admin$', 'django.contrib.auth.views.login', {'template_name': 'happyhour/login.html'}),
     url(r'^login/admin/$', 'django.contrib.auth.views.login', {'template_name': 'happyhour/login.html'}),

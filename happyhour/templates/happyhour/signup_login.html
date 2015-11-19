@@ -1,118 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/static/images/mochiolive.ico">
-    <title>MochiOlive</title>
-    <!-- Bootstrap core CSS -->
-    <link href="/static/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/css/signup_login.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="/static/css/cover.css" rel="stylesheet">
-   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-   <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-   <script src="/static/jquery/jquery.js"></script>
-  </head>
-  <body>
-    <div class="site-wrapper">
-      <div class="site-wrapper-inner">
-        <div class="cover-container">
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">MochiOlive</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <!--                   <li><a href="#">Features</a></li>
-                    <li><a href="#">Contact</a></li> -->
-                </ul>
-              </nav>
-              <div id="leftcolumn">
-                 <!-- LOGIN FORM -->
-                 <div class="text-center" style="padding:50px 0">
-                   <div class="logo">login</div>
-                   <!-- Main Form -->
-                   <div class="login-form-1">
-                     <form id="login-form" class="text-left">
-                       <div class="login-form-main-message"></div>
-                       <div class="main-login-form">
-                         <div class="login-group">
-                           <div class="form-group">
-                             <label for="lg_username" class="sr-only">Username</label>
-                             <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="username">
-                           </div>
-                           <div class="form-group">
-                             <label for="lg_password" class="sr-only">Password</label>
-                             <input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="password">
-                           </div>
-                           <div class="form-group login-group-checkbox">
-                             <input type="checkbox" id="lg_remember" name="lg_remember">
-                             <label for="lg_remember">remember</label>
-                           </div>
-                         </div>
-                         <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
-                       </div>
-                       <div class="etc-login-form">
-                         <p>forgot your password? <a href="#">click here</a></p>
-                         <p>new user? <a href="#">create new account</a></p>
-                       </div>
-                     </form>
-                   </div>
-                   <!-- end:Main Form -->
-                 </div>
-              <!-- /form -->
-              </div>
-              <div id="rightcolumn">
-                  <div class="text-center" style="padding:50px 0">
-                  <div class="logo">register</div>
-                  <!-- Main Form -->
-                  <div class="login-form-1">
-                     <form id="register-form" class="text-left">
-                        <div class="login-form-main-message"></div>
-                        <div class="main-login-form">
-                           <div class="login-group">
-                              <div class="form-group">
-                                 <label for="reg_username" class="sr-only">Username</label>
-                                 <input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
-                              </div>
-                              <div class="form-group">
-                                 <label for="reg_password" class="sr-only">Password</label>
-                                 <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
-                              </div>
-                              <div class="form-group">
-                                 <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
-                                 <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
-                              </div>
-                              
-                              <div class="form-group">
-                                 <label for="reg_email" class="sr-only">Email</label>
-                                 <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">
-                              </div>
-                           </div>
-                           <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
-                        </div>
-                     </form>
-                  </div>
-   <!-- end:Main Form -->
-   </div>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-              </div>
-            </div>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/static/images/mochiolive.ico">
+
+  <title>MochiOlive</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/static/css/bootstrap.css" rel="stylesheet">
+  <link href="/static/css/cover.css" rel="stylesheet">
+  <link href="/static/css/signup_login.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+</head>
+<body>
+  <div class="site-wrapper">
+    <div class="site-wrapper-inner">
+      <div class="cover-container">
+        <div class="masthead clearfix">
+          <div class="inner">
+            <h3 class="masthead-brand">MochiOlive</h3>
+            <nav>
+              <ul class="nav masthead-nav">
+                <li class="active"><a href="/">Home</a></li>
+              </ul>
+            </nav>
           </div>
         </div>
+        <div class="wrapper">
+          <div id="loginRegisterationForm">
+            <div class="main">
+              <div class="header">
+                <h1>Login Here or Register for a New Account!</h1>
+              </div>
+              <div class="left">
+                <h2>Login:</h2>
+                <form>
+                 <div>
+                  <li><input type="text"  placeholder="Username" required/></li>
+                  <li> <input type="password"  placeholder="Password" required/></li>
+                  <li><label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Remeber Me</label></li>
+                  <li><a href="#">Don't remember your password?</a></li>
+                  <li><input type="submit" onclick="myFunction()" value="Login" ></li>
+                </div>
+              </form>
+            </div>
+            <div class="divider"></div>
+            <div class="right">
+              <div class="clear"> </div>
+              <h2>New Account:</h2>
+              <form>
+               <li>
+                 <input type="text"   placeholder="Username" required/>
+                 <a href="#" class="icon ticker"> </a>
+                 <div class="clear"> </div>
+               </li>
+             <li><input type="text"   placeholder="Email" required/>
+             <a href="#" class="icon ticker"> </a>
+             <div class="clear"> </div>
+           </li>
+           <li>
+            <input type="password"   placeholder="password" required/>
+            <a href="#" class="icon into"> </a>
+            <div class="clear"> </div>
+          </li>
+          <li>
+            <input type="password confirmation"   placeholder="type same password" required/>
+            <a href="#" class="icon into"> </a>
+            <div class="clear"> </div>
+          </li>
+          <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>I agree that I will join the mochi community and celebtrate olive festival</label>
+          <input type="submit" onclick="myFunction()" value="Create Account">
+          <div class="clear"> </div>
+        </form>
       </div>
     </div>
+
+  </div>
+</div>
+<!-- end:Main Form -->
     <!-- Bootstrap core JavaScript
-      ================================================== -->
+    ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
-</html>
+  </html></script>
