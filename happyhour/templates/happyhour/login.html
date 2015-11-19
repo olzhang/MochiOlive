@@ -1,5 +1,18 @@
 {% block content %}
 
+<nav class="navbar navbar-default navbar-fixed-top mochi-olive-border">
+      <img class="title-image navbar-image" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/>
+      <a class="navbar-brand navbar-title" href="#">MochiOlive Happy Hour Admin Login</a>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
@@ -9,7 +22,7 @@
 
 <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
 {% csrf_token %}
-<table>
+<table id="form">
 <tr>
     <td>{{ form.username.label_tag }}</td>
     <td>{{ form.username }}</td>
@@ -23,5 +36,9 @@
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="/admin/dashboard/" />
 </form>
+
+      </div>
+    </nav>
+
 
 {% endblock %}
