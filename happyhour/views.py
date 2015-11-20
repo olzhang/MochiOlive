@@ -82,9 +82,7 @@ class UserFavoritesList(APIView):
 
     def post(self, request, user, format=None):
         serializer = FavoriteSerializer(data=request.data)
-        "hey"
         if serializer.is_valid():
-            print "is valid"
             favorites = Favorites.objects.filter(user=user, restaurant=request.data['restaurant'])
             if not favorites.exists():
                 serializer.save()
