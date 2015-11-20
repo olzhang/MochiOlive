@@ -10,6 +10,38 @@ function initGoogleMap() {
     map = new google.maps.Map(document.getElementById('map'), options);
 }
 
+window.onload = function() {
+  var startPos;
+  var geoOptions = {
+    enableHighAccuracy: true
+  }
+
+  var geoSuccess = function(position) {
+    startPos = position;
+    var lat = startPos.coords.latitude;
+    var lon = startPos.coords.longitude;
+    var myLatLng = {lat: lat, lng: lon};
+    var pinImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/yellow-dot.png");
+    var tooltip = "Your current location";
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      icon: pinImage,
+      title: tooltip
+    });
+  };
+  var geoError = function(error) {
+    console.log('Error occurred. Error code: ' + error.code);
+    // error.code can be:
+    //   0: unknown error
+    //   1: permission denied
+    //   2: position unavailable (error response from location provider)
+    //   3: timed out
+  };
+
+  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+};
+
 //attach the infowindow to marker
 function bindInfoWindow(marker, map, infowindow, restaurant) {
     google.maps.event.addListener(marker, 'click', function() {
