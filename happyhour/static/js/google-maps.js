@@ -85,7 +85,13 @@ function setInfo(restaurant) {
       '<button id="map-fav-' + restaurant.id + '" type="button" class="btn btn-favorites" onclick="addUserFavorite(this.id, 4, 243)">' +
         '<span class="glyphicon glyphicon-plus"></span><span>  </span><span id="btn-text">Favorite</span>' + 
       '</button>' +
-      '<a href="https://twitter.com/intent/tweet?button_hashtag=' + restaurant.name +' &text=My%20Happy%20Hour%20experience%20at ' + restaurant.name +'" class="twitter-hashtag-button">Tweet My Experience</a>' +
+    '</div>' +
+    '<div class="btn-group">' +
+    '<button id="tweetbtn" type="button" class="btn btn-favorites"' +
+    '<span>' +
+    '<a href="https://twitter.com/intent/tweet?button_hashtag=' + restaurant.name +'&text=My%20Happy%20Hour%20experience%20at ' + restaurant.name +'" class="twitter-hashtag-button">Tweet My Experience</a>' +
+    '</span>' +
+    '</button>' +
     '</div>' +
   '</div>');
 }
