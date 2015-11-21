@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^v1/favorites/twitter/(?P<twitter>[0-9]+)/$', views.UserFavoritesList.as_view()),
     url(r'^$', TemplateView.as_view(template_name='homepage_base.html')),
     url(r'^login/user/$', TemplateView.as_view(template_name='happyhour/signup_login.html')),
-    url(r'^happy-hour-restaurants/$', restaurant_views.RestaurantPage.as_view(), name='restaurant-base'),
+    url(r'^happy-hour-restaurants/$', restaurant_views.RestaurantView.as_view()),
     url(r'^happy-hour-restaurants/login/admin$', 'django.contrib.auth.views.login', {'template_name': 'happyhour/login.html'}),
     url(r'^login/admin/$', 'django.contrib.auth.views.login', {'template_name': 'happyhour/login.html'}),
     url(r'^admin/dashboard/$', login_required(admin_view.RestaurantAdmin.as_view()), name='restaurant_list_admin'),
