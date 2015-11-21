@@ -26,5 +26,6 @@
 {% block user_favorites %}
   <script type="text/javascript">
     var userId = String({{user.id}})
+    var restaurants = getUserFavorites(userId);
   </script>
 {% endblock %}
