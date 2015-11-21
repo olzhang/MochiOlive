@@ -93,42 +93,10 @@ class UserFavoritesList(APIView):
             print("authenticated")
         serializer = FavoriteSerializer(data=request.data)
         if serializer.is_valid():
-            favorites = Favorites.objects.filter(user=user, restaurant=request.data['restaurant'])
+            favorites = Favorites.objects.filter(user=user,
+                                                 restaurant=request.data['restaurant'])
             if not favorites.exists():
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(request.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class TwitterFavoritesList(APIView):
-    """
-    GET: list all favorite restaurants of a twitter user
-    POST: add a new favorite restaurant to a twitter user
-    """
-    def get_object(self, twitter):
-        try: 
-            return Favorites.objects.get(user=twitter)
-        except Favorites.DoesNotExist:
-            raise Http404
-
-    def get(self, request, twitter, format=None): 
-        favorites = self.get_object(twitter)
-        serializer = FavoriteSerializer(favorites)
-        return Response(serializer.data)
-
-    def post(self, request, twitter, format=None):
-        serializer = FavoriteSerializer(data=request.data)
-        "hey"
-        if serializer.is_valid():
-            print "is valid"
-            favorites = Favorites.objects.filter(twitter=twitter, restaurant=request.data['restaurant'])
-            if not favorites.exists():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            return Response(request.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-

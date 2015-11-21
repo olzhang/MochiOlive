@@ -13,6 +13,5 @@ class Restaurant(models.Model):
 class Favorites(models.Model):
 	user = models.ForeignKey(User)
 	restaurant = models.ForeignKey(Restaurant)
-	twitter = models.ForeignKey(Twitter, null=True, blank=True)
 
 

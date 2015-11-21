@@ -9,4 +9,4 @@ class RestaurantSerializer(serializers.ModelSerializer):
 class FavoriteSerializer(serializers.ModelSerializer):
 	class Meta: 
 		model = Favorites 
-		fields = ('id', 'user', 'restaurant', 'twitter')
+		fields = ('id', 'user', 'restaurant')
