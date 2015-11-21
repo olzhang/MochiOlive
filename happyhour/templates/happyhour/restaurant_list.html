@@ -11,7 +11,7 @@
       </tr>
     </thead>
   <tbody>
-    {% for restaurant in object_list %}
+    {% for restaurant in restaurants %}
       <tr>
         <td>{{ restaurant.name }}</td>
         <td>{{ restaurant.address }}</td> 
@@ -21,4 +21,10 @@
     {% endfor %}
  </tbody>
 </table>
+{% endblock %}
+
+{% block user_favorites %}
+  <script type="text/javascript">
+    var userId = String({{user.id}})
+  </script>
 {% endblock %}

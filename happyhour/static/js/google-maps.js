@@ -68,8 +68,9 @@ function bindInfoWindow(marker, map, infowindow, restaurant) {
     */
 }
 
-
 function setInfo(restaurant) {
+  console.log(userId);
+  console.log(restaurant.id);
  return(
   '<div id="iw_container">' +
     '<div class="iw_title">'+ restaurant.name+'</div>' +
@@ -82,7 +83,7 @@ function setInfo(restaurant) {
       '</p>'+
     '</div>' +
     '<div class="btn-group favorites-map">' +
-      '<button id="map-fav-' + restaurant.id + '" type="button" class="btn btn-favorites" onclick="addUserFavorite(this.id, 4, 243)">' +
+      '<button id="map-fav-' + restaurant.id + '" type="button" class="btn btn-favorites" onclick="addUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
         '<span class="glyphicon glyphicon-plus"></span><span>  </span><span id="btn-text">Favorite</span>' + 
       '</button>' +
     '</div>' +
@@ -105,7 +106,6 @@ function closePreviousInfoWindow(){
 // Mark all happy hour restaurants on map
 function markPoint(){
     var restaurants = getData();
-    console.log(restaurants[0].id); 
     var markers = [];
     for (key in restaurants){
         var restaurant = restaurants[key];
@@ -136,6 +136,5 @@ function getData(){
             });
         }
     });
-  console.log(items);
   return items;
 }
