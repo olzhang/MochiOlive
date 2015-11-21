@@ -75,9 +75,14 @@ class UserFavoritesList(APIView):
         except Favorites.DoesNotExist:
             raise Http404
 
-    def get(self, request, user, format=None): 
-        favorites = self.get_object(user)
-        serializer = FavoriteSerializer(favorites)
+    def get(self, request, user, format=None):
+        print "getting favorites"
+        # favorites = self.get_object(user)
+        favorites = Favorites.objects.filter(user=user)
+        print "favorites"
+        print favorites
+        serializer = FavoriteSerializer(favorites, many=True)
+        print "serialized"
         return Response(serializer.data)
 
     def post(self, request, user, format=None):

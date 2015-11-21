@@ -32,3 +32,21 @@ function addUserFavorite(markerId, user, restaurant){
 	});
 
 }
+
+// Get list of user's favorite restaurants
+function getUserFavorites(user){
+	url = "http://127.0.0.1:8000/v1/favorites/user/" + user + "/";
+	var items = {}; 
+	$.ajax({
+		url: url, 
+		async: false, 
+		dataType: 'json', 
+		success: function (restaurants){
+			$.each( restaurants, function( key, data ){
+				items[key] = data;
+			});
+		}
+	});
+	console.log(items);
+	return items; 
+}
