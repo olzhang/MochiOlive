@@ -89,7 +89,7 @@ function setInfo(restaurant) {
     '<div class="btn-group">' +
     '<button id="tweetbtn" type="button" class="btn btn-favorites"' +
     '<span>' +
-    '<a href="https://twitter.com/intent/tweet?button_hashtag=' + restaurant.name +'&text=My%20Happy%20Hour%20experience%20at ' + restaurant.name +'" class="twitter-hashtag-button">Tweet My Experience</a>' +
+    '<a href="https://twitter.com/intent/tweet?button_hashtag=MochiOliveHappyHour&text=My%20Happy%20Hour%20experience%20at ' + restaurant.name +'" class="twitter-hashtag-button">Tweet My Experience</a>' +
     '</span>' +
     '</button>' +
     '</div>' +
