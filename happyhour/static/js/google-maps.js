@@ -69,25 +69,8 @@ function bindInfoWindow(marker, map, infowindow, restaurant) {
 }
 
 function setInfo(restaurant) {
-  var favoritesButton;
-  if(typeof userId !== 'undefined'){
-    if (restaurants.indexOf(restaurant.id) > -1){
-      favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id + 
-          '" type="button" class="btn btn-favorites btn-favorited" onclick="addUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
-          '<span class="glyphicon glyphicon-ok"></span><span>  </span><span id="btn-text">Favorited</span>' + '</button>' + 
-          '</div>' + '<div class="btn-group">';
-    }
-    else {
-      favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id + 
-        '" type="button" class="btn btn-favorites" onclick="addUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
-        '<span class="glyphicon glyphicon-plus"></span><span>  </span><span id="btn-text">Favorite</span>' + '</button>' + 
-        '</div>' + '<div class="btn-group">';
-    }
-  }
-  else { 
-    favoritesButton = ''; 
-  }
- return(
+  var favoritesButton = setFavButton(restaurant);
+return(
   '<div id="iw_container">' +
     '<div class="iw_title">'+ restaurant.name+'</div>' +
     '<div class="iw_content">' +
@@ -105,6 +88,28 @@ function setInfo(restaurant) {
     '</button>' +
     '</div>' +
   '</div>');
+}
+
+function setFavButton(restaurant){
+  var favoritesButton;
+  if(typeof userId !== 'undefined'){
+    if (restaurants.indexOf(restaurant.id) > -1){
+      favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id + 
+          '" type="button" class="btn btn-favorites btn-favorited" onclick="deleteUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
+          '<span class="glyphicon glyphicon-ok"></span><span>  </span><span id="btn-text">Favorited</span>' + '</button>' + 
+          '</div>' + '<div class="btn-group">';
+    }
+    else {
+      favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id + 
+        '" type="button" class="btn btn-favorites" onclick="addUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
+        '<span class="glyphicon glyphicon-plus"></span><span>  </span><span id="btn-text">Favorite</span>' + '</button>' + 
+        '</div>' + '<div class="btn-group">';
+    }
+  }
+  else { 
+    favoritesButton = ''; 
+  }
+  return favoritesButton;
 }
 
 function closePreviousInfoWindow(){
