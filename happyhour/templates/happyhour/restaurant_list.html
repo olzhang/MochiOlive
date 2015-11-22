@@ -25,7 +25,9 @@
 
 {% block user_favorites %}
   <script type="text/javascript">
-    var userId = String({{user.id}})
-    var restaurants = getUserFavorites(userId);
+    {% if user %}
+      var userId = String({{user.id}})
+      var restaurants = getUserFavorites(userId);
+    {% endif %}
   </script>
 {% endblock %}

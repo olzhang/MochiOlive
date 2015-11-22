@@ -70,16 +70,22 @@ function bindInfoWindow(marker, map, infowindow, restaurant) {
 
 function setInfo(restaurant) {
   var favoritesButton;
-  if (restaurants.indexOf(restaurant.id) > -1){
-    favoritesButton = '<button id="map-fav-' + restaurant.id + 
-        '" type="button" class="btn btn-favorites btn-favorited" onclick="addUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
-        '<span class="glyphicon glyphicon-ok"></span><span>  </span><span id="btn-text">Favorited</span>' + '</button>'
+  if(typeof userId !== 'undefined'){
+    if (restaurants.indexOf(restaurant.id) > -1){
+      favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id + 
+          '" type="button" class="btn btn-favorites btn-favorited" onclick="addUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
+          '<span class="glyphicon glyphicon-ok"></span><span>  </span><span id="btn-text">Favorited</span>' + '</button>' + 
+          '</div>' + '<div class="btn-group">';
+    }
+    else {
+      favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id + 
+        '" type="button" class="btn btn-favorites" onclick="addUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
+        '<span class="glyphicon glyphicon-plus"></span><span>  </span><span id="btn-text">Favorite</span>' + '</button>' + 
+        '</div>' + '<div class="btn-group">';
+    }
   }
-  else {
-    favoritesButton = '<button id="map-fav-' + restaurant.id + 
-      '" type="button" class="btn btn-favorites" onclick="addUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
-      '<span class="glyphicon glyphicon-plus"></span><span>  </span><span id="btn-text">Favorite</span>' + '</button>'
-
+  else { 
+    favoritesButton = ''; 
   }
  return(
   '<div id="iw_container">' +
@@ -91,8 +97,7 @@ function setInfo(restaurant) {
           '<span class="col">Phone : </span>'+ restaurant.phone_number + '<br>' +
           '<span class="col">Rating : </span>'+restaurant.rating +
       '</p>'+
-    '</div>' +
-    '<div class="btn-group favorites-map">' + favoritesButton + '</div>' + '<div class="btn-group">' +
+    '</div>' + favoritesButton +
     '<button id="tweetbtn" type="button" class="btn btn-favorites"' +
     '<span>' +
     '<a href="https://twitter.com/intent/tweet?button_hashtag=MochiOliveHappyHour&text=My%20Happy%20Hour%20experience%20at ' + restaurant.name +'" class="twitter-hashtag-button">Tweet My Experience</a>' +
