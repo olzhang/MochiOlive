@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from happyhour.models import Restaurant, Favorites
 from happyhour.serializers import RestaurantSerializer, FavoriteSerializer
 from django.http import Http404
@@ -69,28 +68,12 @@ class UserFavoritesList(APIView):
     GET: list all favorite restaurants of a user
     POST: add a new favorite restaurant to a user
     """
-    def get_object(self, user):
-        try: 
-            return Favorites.objects.get(user=user)
-        except Favorites.DoesNotExist:
-            raise Http404
-
     def get(self, request, user, format=None):
-        print "getting favorites"
-        # favorites = self.get_object(user)
         favorites = Favorites.objects.filter(user=user)
-        print "favorites"
-        print favorites
         serializer = FavoriteSerializer(favorites, many=True)
-        print "serialized"
         return Response(serializer.data)
 
     def post(self, request, user, format=None):
-        print("trying to authenticate")
-        if request.user.is_authenticated():
-            username = request.user.username
-            print(username)
-            print("authenticated")
         serializer = FavoriteSerializer(data=request.data)
         if serializer.is_valid():
             favorites = Favorites.objects.filter(user=user,
@@ -100,3 +83,14 @@ class UserFavoritesList(APIView):
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(request.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UserFavoritesDetail(APIView):
+    """
+    DELETE: delete a favorite restaurant of a user
+    """
+    def delete(self, request, user, restaurant, format=None):
+        print "trying to unfavorite"
+        favorite = Favorites.objects.get(user=user, restaurant=restaurant)
+        print favorite
+        favorite.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
