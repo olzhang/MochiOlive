@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <!--<style type="text/css">
-      #map { height: 500px; } 
+      #map { height: 500px; }
     </style>-->
 
     <!-- Extra styles for template-->
@@ -29,7 +29,7 @@
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top mochi-olive-border">
       <img class="title-image navbar-image" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/>
-      <a class="navbar-brand navbar-title" href="#">MochiOlive Happy Hour</a>
+      <a class="navbar-brand navbar-title" href="/">MochiOlive Happy Hour</a>
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -41,7 +41,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="/login/admin">Login as Admin <span class="sr-only">(current)</span></a></li>
+            {% if request.user.is_authenticated %}{% load account %}
+            <li class ="welcome">Welcome {% user_display user %} </li>
+            <li><a href="{% url 'django.contrib.auth.views.logout' %}">Logout <span class="sr-only">(current)</span></a></li>
+            <li><a href="/login/admin">Login as Admin <span class="sr-only">(current)</span></a></li>
+            {% else %}<li class ="welcome">Welcome Guest</li>{% endif %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>
