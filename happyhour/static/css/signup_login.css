@@ -4,7 +4,6 @@
   text-shadow: none;
 }
 
-
 #loginRegisterationForm{
   position: absolute;
   top: 10em;
@@ -21,22 +20,86 @@
    border-radius: 1px;
 }
 
+#loginRegisterationForm .div{
+
+}
+
+.left input[type=submit]{
+  width:50%;
+  background-color: #1CB94E;
+  font-family: 'Open Sans', sans-serif;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 14px 0;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+
+.right input[type=submit]{
+  width:50%;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #2699ef;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 14px 0;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.loginform {
+    align-items:center;
+}
+
+
+.left input[type=text],.left input[type=password] {
+  margin-left: 0.5em;
+  width:80%;
+  padding: 0.7em 2em 0.7em 1em;
+  color: #000;
+  font-size:15px;
+  outline: none;
+  margin-bottom: 0.2em;
+}
+
+.left > label {
+  font-size:13px;
+}
+
 .left{
     float: left;
-    width:45%;
+    width:48%;
 }
 .right{
     float: right;
-    width: 45%;
+    width: 48%;
 }
+
+.right input[type=text],.right input[type=password] {
+  margin-right: 0.4em;
+  margin-bottom: 0.2em;
+  width:80%;
+  padding: 0.7em 2em 0.7em 1em;  color: #000;
+  font-size:15px;
+  outline: none;
+}
+
 
 .divider{
     position:absolute;
     height:60%;
-    width: 5%;
+    width: 4%;
     left:50%;
     border-left:1px solid black;
 }
+
+
 
 h1{
   text-decoration: none;
@@ -68,4 +131,8 @@ label{
 h2{
   color: #000000;
   text-decoration: none;
+}
+
+li{
+  list-style-type:none;
 }
