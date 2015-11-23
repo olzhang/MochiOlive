@@ -52,6 +52,10 @@
           </button>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/happy-hour-restaurants/">Happy Hour</a></li>
+            <li><a href="/happy-hour-restaurants/favorites/">Favorites</a></li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if request.user.is_authenticated %}{% load account %}
             <li class ="welcome">Welcome {% user_display user %} </li>
