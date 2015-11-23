@@ -72,3 +72,8 @@ function getUserFavorites(user){
 	console.log(items);
 	return items; 
 }
+
+function triggerOptions(id){
+	var element = "#" + id + "-info";
+	jQuery(element).slideToggle('fast');
+}

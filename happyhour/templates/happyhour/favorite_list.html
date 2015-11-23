@@ -1,6 +1,11 @@
 {% extends "favorites_base.html" %}
 
 {% block favorite-restaurants %}
+<script type="text/javascript">
+	$(document).ready(function(){
+	    $('.fav-options').hide();
+	});
+</script>
 <table>
   <thead>
       <tr>
@@ -10,13 +15,16 @@
         <th>Rating</th>
       </tr>
     </thead>
-  <tbody>
+  <tbody class="fav-table">
     {% for fav in favorites %}
-      <tr id="{{forloop.counter}}">
+      <tr id="{{forloop.counter}}" onclick="triggerOptions(this.id)">
         <td>{{ fav.restaurant.name }}</td>
         <td>{{ fav.restaurant.address }}</td> 
         <td>{{ fav.restaurant.phone_number }}</td>
         <td>{{ fav.restaurant.rating }}</td>
+      </tr>
+      <tr>
+      	<td colspan="4" id="{{forloop.counter}}-info" class="fav-options">Options</td>
       </tr>
     {% endfor %}
  </tbody>
