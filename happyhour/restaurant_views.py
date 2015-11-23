@@ -8,10 +8,7 @@ class RestaurantView(View):
 		restaurants = Restaurant.objects.order_by("-rating")
 		if request.user.is_authenticated():
 			user = request.user
-			print user.id
-			print "authenticated"
 			favorites = Favorites.objects.filter(user=user.id)
-			print favorites
 			return render(request, self.template_name, {'restaurants': restaurants,
 														'user': user,
 														'favorites': favorites})
