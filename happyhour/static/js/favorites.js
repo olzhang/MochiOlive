@@ -60,6 +60,7 @@ function getUserFavorites(user){
 	var items = []; 
 	$.ajax({
 		url: url, 
+		type: 'GET', 
 		async: false, 
 		dataType: 'json', 
 		success: function (restaurants){

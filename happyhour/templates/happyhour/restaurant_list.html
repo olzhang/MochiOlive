@@ -12,7 +12,7 @@
     </thead>
   <tbody>
     {% for restaurant in restaurants %}
-      <tr>
+      <tr id="{{forloop.counter}}" onclick="triggerMarker(this.id)">
         <td>{{ restaurant.name }}</td>
         <td>{{ restaurant.address }}</td> 
         <td>{{ restaurant.phone_number }}</td>
