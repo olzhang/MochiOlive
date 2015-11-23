@@ -24,7 +24,20 @@
         <td>{{ fav.restaurant.rating }}</td>
       </tr>
       <tr>
-      	<td colspan="4" id="{{forloop.counter}}-info" class="fav-options">Options</td>
+      	<td colspan="4" id="{{forloop.counter}}-info" class="fav-options">
+      		Options
+      		<ul>
+      			<button id="" type="button" class="btn btn-favorites" onclick="">
+        			<span class="glyphicon glyphicon-minus"></span>
+        			<span>  </span><span id="btn-text">Unfavorite</span>
+        		</button>
+      			<button id="" type="button" class="btn btn-favorites" onclick="">
+        			<span class="glyphicon glyphicon-globe"></span>
+        			<span>  </span><span id="btn-text">View on Map</span>
+        		</button>
+      		</ul>
+
+      	</td>
       </tr>
     {% endfor %}
  </tbody>
