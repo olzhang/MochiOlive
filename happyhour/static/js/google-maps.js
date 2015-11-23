@@ -2,12 +2,19 @@
 var map;
 var prev_infowindow;
 
+var directionsService;
+var directionsDisplay;
+var myLatLng;
+
 function initGoogleMap() {
     var options={
         center: {lat: 49.25, lng: -123.1},
         zoom: 11
     };
+    directionsService = new google.maps.DirectionsService;
+    directionsDisplay = new google.maps.DirectionsRenderer;
     map = new google.maps.Map(document.getElementById('map'), options);
+    directionsDisplay.setMap(map);
 }
 
 window.onload = function() {
@@ -20,7 +27,7 @@ window.onload = function() {
     startPos = position;
     var lat = startPos.coords.latitude;
     var lon = startPos.coords.longitude;
-    var myLatLng = {lat: lat, lng: lon};
+    myLatLng = {lat: lat, lng: lon};
     var pinImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/yellow-dot.png");
     var tooltip = "Your current location";
     var marker = new google.maps.Marker({
@@ -43,8 +50,9 @@ window.onload = function() {
 };
 
 //attach the infowindow to marker
-function bindInfoWindow(marker, map, infowindow, restaurant) {
+function bindInfoWindow(marker, map, infowindow, restaurant, latlng) {
     google.maps.event.addListener(marker, 'click', function() {
+        calculateAndDisplayRoute(directionsService, directionsDisplay,latlng);
         closePreviousInfoWindow();
         if(prev_infowindow == infowindow) {
            prev_infowindow.close();
@@ -132,7 +140,7 @@ function markPoint(){
         var infowindow =  new google.maps.InfoWindow();
         // marker.setMap(map);
 
-        bindInfoWindow(marker, map, infowindow, restaurant);
+        bindInfoWindow(marker, map, infowindow, restaurant, latlng);
         markers.push(marker);
   };
     var cluster = new MarkerClusterer(map, markers);
@@ -152,4 +160,27 @@ function getData(){
         }
     });
   return items;
+}
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay, end) {
+  if (myLatLng == null) {
+    window.alert('Your position has not been set yet, please wait');
+    return;
+  } else {
+      //console.log(start.lat);
+  }
+  //var tempLatLng = new LatLng (lat: myLatLng.lat, lng: myLatLng.lng);
+  directionsService.route({
+    origin: myLatLng,
+    destination: end,
+    travelMode: google.maps.TravelMode.WALKING
+    }, function(response, status) {
+    if (status === google.maps.DirectionsStatus.OK) {
+      console.log('Directions mapped');
+
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
 }
