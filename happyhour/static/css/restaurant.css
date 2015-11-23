@@ -94,6 +94,14 @@ thead {
 #rightcolumn {
      width: 50%;
 }
+#favoritesColumn {
+  margin: 0px auto;
+  max-width: 750px;
+  width: 100%;
+}
+.favorites-table {
+  padding-top: 45px;
+}
 .container-mochi {
 	padding-left: 2%;
 	padding-right: 2%;

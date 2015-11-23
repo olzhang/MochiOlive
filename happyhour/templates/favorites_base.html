@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/images/mochiolive.ico">
+
+    <title>Happy Hour</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <!--<style type="text/css">
+      #map { height: 500px; }
+    </style>-->
+
+    <!-- Extra styles for template-->
+    <link href="/static/css/restaurant.css" rel="stylesheet">
+    <link href="/static/css/infowindow.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/js/google-maps.js"></script>
+    <script type="text/javascript" src="/static/js/favorites.js"></script>
+
+  </head>
+
+  <body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top mochi-olive-border">
+      <img class="title-image navbar-image" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/>
+      <a class="navbar-brand navbar-title" href="/">MochiOlive Happy Hour</a>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/happy-hour-restaurants/">Happy Hour</a></li>
+            <li class="active"><a href="/happy-hour-restaurants/favorites/">Favorites</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if request.user.is_authenticated %}{% load account %}
+            <li class ="welcome">Welcome {% user_display user %} </li>
+            <li><a href="{% url 'django.contrib.auth.views.logout' %}">Logout <span class="sr-only">(current)</span></a></li>
+            <li><a href="/login/admin">Login as Admin <span class="sr-only">(current)</span></a></li>
+            {% else %}<li class ="welcome">Welcome Guest</li>{% endif %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="container-mochi center-image">
+     <!-- <img class="title-image" src="/static/images/olive.jpg"/> -->
+        <div id="wrapper" class="favorites-table">
+          <div id="favoritesColumn" align="center">
+            {% block favorite-restaurants %} {% endblock %}
+          </div>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   <script src="/static/js/bootstrap.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+
+
+</html>
+

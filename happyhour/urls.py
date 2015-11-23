@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from happyhour import views, restaurant_views, admin_view
+from happyhour import views, restaurant_views, admin_view, favorite_views
 from rest_framework.urlpatterns import format_suffix_patterns
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='homepage_base.html')),
     url(r'^login/user/$', TemplateView.as_view(template_name='happyhour/signup_login.html')),
     url(r'^happy-hour-restaurants/$', restaurant_views.RestaurantView.as_view()),
+    url(r'^happy-hour-restaurants/favorites/$', favorite_views.FavoritesView.as_view()),
     url(r'^happy-hour-restaurants/login/admin$', 'django.contrib.auth.views.login', {'template_name': 'happyhour/login.html'}),
     url(r'^login/admin/$', 'django.contrib.auth.views.login', {'template_name': 'happyhour/login.html'}),
     url(r'^admin/dashboard/$', login_required(admin_view.RestaurantAdmin.as_view()), name='restaurant_list_admin'),

@@ -1,0 +1,24 @@
+{% extends "favorites_base.html" %}
+
+{% block favorite-restaurants %}
+<table>
+  <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone number</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+  <tbody>
+    {% for fav in favorites %}
+      <tr id="{{forloop.counter}}">
+        <td>{{ fav.restaurant.name }}</td>
+        <td>{{ fav.restaurant.address }}</td> 
+        <td>{{ fav.restaurant.phone_number }}</td>
+        <td>{{ fav.restaurant.rating }}</td>
+      </tr>
+    {% endfor %}
+ </tbody>
+</table>
+{% endblock %}
