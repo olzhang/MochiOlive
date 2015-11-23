@@ -13,7 +13,8 @@ class RestaurantList(APIView):
     POST: add a new restaurant
     """
     def get(self, request, format=None):
-        restaurants = Restaurant.objects.all()
+        # restaurants = Restaurant.objects.all()
+        restaurants = Restaurant.objects.order_by("-rating")
         serializer = RestaurantSerializer(restaurants, many=True)
         return Response(serializer.data)
 

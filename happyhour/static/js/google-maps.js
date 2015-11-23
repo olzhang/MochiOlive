@@ -42,8 +42,24 @@ window.onload = function() {
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 };
 
+// link restaurant table rows to marker on map
+function triggerMarker(tableId) {
+  var infowindow = infowindows[tableId - 1];
+  closePreviousInfoWindow();
+  if(prev_infowindow == infowindow) {
+     prev_infowindow.close();
+     prev_infowindow = null;
+   }
+  infowindow.open(map, markers[tableId - 1]);
+
+  google.maps.event.addListener(map, 'click', function() {
+    infowindow.close();
+  });
+}
+
 //attach the infowindow to marker
 function bindInfoWindow(marker, map, infowindow, restaurant) {
+    infowindow.setContent(setInfo(restaurant));
     google.maps.event.addListener(marker, 'click', function() {
         closePreviousInfoWindow();
         if(prev_infowindow == infowindow) {
@@ -52,7 +68,6 @@ function bindInfoWindow(marker, map, infowindow, restaurant) {
            return;
         }
         prev_infowindow = infowindow;
-        infowindow.setContent(setInfo(restaurant));
         infowindow.open(map, marker);
     });
 
@@ -121,7 +136,8 @@ function closePreviousInfoWindow(){
 // Mark all happy hour restaurants on map
 function markPoint(){
     var restaurants = getData();
-    var markers = [];
+    markers = [];
+    infowindows = [];
     for (key in restaurants){
         var restaurant = restaurants[key];
         var lat = restaurant.location_lat;
@@ -133,6 +149,7 @@ function markPoint(){
         // marker.setMap(map);
 
         bindInfoWindow(marker, map, infowindow, restaurant);
+        infowindows.push(infowindow);
         markers.push(marker);
   };
     var cluster = new MarkerClusterer(map, markers);

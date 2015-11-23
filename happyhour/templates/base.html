@@ -78,11 +78,11 @@
       <script type="text/javascript" src="/static/js/markerclusterer.js"></script>
       <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&"></script>
+      {% block user_favorites %}{% endblock %}
       <script type="text/javascript">
         initGoogleMap();
         markPoint();
       </script>
-      {% block user_favorites %}{% endblock %}
     </div> <!-- /container -->
 
 
