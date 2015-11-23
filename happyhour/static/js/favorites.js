@@ -17,7 +17,7 @@ function getCookie(name) {
 
 // Upon click of favorite button, adds restaurant to user's list of favorites.
 function addUserFavorite(markerId, user, restaurant){
-	url = "http://127.0.0.1:8000/v1/favorites/user/" + user + "/"; 
+	url = "/v1/favorites/user/" + user + "/"; 
 	data = {'user': user, 'restaurant': restaurant, 'csrfmiddlewaretoken': getCookie('csrftoken')};
 	var status = $.post(url, data, function(data, status){
 		// if favorite addition was successful, make button reflect addition.
@@ -36,7 +36,7 @@ function addUserFavorite(markerId, user, restaurant){
 
 function deleteUserFavorite(markerId, user, restaurant){
 	$.ajax({
-	    url: "http://127.0.0.1:8000/v1/favorites/user/" + user + "/restaurant/" + restaurant + "/",
+	    url: "/v1/favorites/user/" + user + "/restaurant/" + restaurant + "/",
 	    type: 'DELETE',
 		beforeSend: function(xhr) {
         	xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
@@ -56,7 +56,7 @@ function deleteUserFavorite(markerId, user, restaurant){
 
 // Get list of user's favorite restaurants
 function getUserFavorites(user){
-	url = "http://127.0.0.1:8000/v1/favorites/user/" + user + "/";
+	url = "/v1/favorites/user/" + user + "/";
 	var items = []; 
 	$.ajax({
 		url: url, 
