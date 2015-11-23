@@ -53,8 +53,12 @@ function triggerMarker(tableId) {
      prev_infowindow.close();
      prev_infowindow = null;
    }
+  if(typeof prev_marker !== 'undefined'){
+    cluster.addMarker(prev_marker);
+  }
   infowindow.open(map, currentMarker);
   prev_infowindow = infowindow;
+  prev_marker = currentMarker;
 
   google.maps.event.addListener(map, 'click', function() {
     infowindow.close();
