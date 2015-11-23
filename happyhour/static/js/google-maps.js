@@ -49,8 +49,32 @@ window.onload = function() {
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 };
 
+ // link restaurant table rows to marker on map
+ function triggerMarker(tableId) {
+  var currentMarker = markers[tableId - 1];
+  cluster.removeMarker(currentMarker);
+  currentMarker.setMap(map);
+  var infowindow = infowindows[tableId - 1];
+  closePreviousInfoWindow();
+  if(prev_infowindow == infowindow) {
+    prev_infowindow.close();
+    prev_infowindow = null;
+  }
+  if(typeof prev_marker !== 'undefined'){
+    cluster.addMarker(prev_marker);
+  }
+  infowindow.open(map, currentMarker);
+  prev_infowindow = infowindow;
+  prev_marker = currentMarker;
+
+   google.maps.event.addListener(map, 'click', function() {
+     infowindow.close();
+    cluster.addMarker(currentMarker);
+   });
+ }
 //attach the infowindow to marker
 function bindInfoWindow(marker, map, infowindow, restaurant, latlng) {
+    infowindow.setContent(setInfo(restaurant));
     google.maps.event.addListener(marker, 'click', function() {
         calculateAndDisplayRoute(directionsService, directionsDisplay,latlng);
         closePreviousInfoWindow();
@@ -60,7 +84,6 @@ function bindInfoWindow(marker, map, infowindow, restaurant, latlng) {
            return;
         }
         prev_infowindow = infowindow;
-        infowindow.setContent(setInfo(restaurant));
         infowindow.open(map, marker);
     });
 
@@ -129,7 +152,8 @@ function closePreviousInfoWindow(){
 // Mark all happy hour restaurants on map
 function markPoint(){
     var restaurants = getData();
-    var markers = [];
+    markers = [];
+    infowindows = [];
     for (key in restaurants){
         var restaurant = restaurants[key];
         var lat = restaurant.location_lat;
@@ -141,9 +165,10 @@ function markPoint(){
         // marker.setMap(map);
 
         bindInfoWindow(marker, map, infowindow, restaurant, latlng);
+        infowindows.push(infowindow);
         markers.push(marker);
   };
-    var cluster = new MarkerClusterer(map, markers);
+    cluster = new MarkerClusterer(map, markers);
 }
 
 // Get happy hour restaurant data
