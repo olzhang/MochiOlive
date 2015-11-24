@@ -21,7 +21,7 @@
     <link href="/static/css/restaurant.css" rel="stylesheet">
     <link href="/static/css/infowindow.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="/static/js/favorites.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 
   </head>
 
@@ -54,11 +54,15 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+    <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&"></script>
+
     <div class="container-mochi center-image">
-     <!-- <img class="title-image" src="/static/images/olive.jpg"/> -->
         <div id="wrapper" class="favorites-table">
           <div id="favoritesColumn" align="center">
             {% block favorite-restaurants %} {% endblock %}
+              
+
           </div>
     </div> <!-- /container -->
 
@@ -67,6 +71,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
    <script src="/static/js/bootstrap.js"></script>
+   <script type="text/javascript" src="/static/js/favorites.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>

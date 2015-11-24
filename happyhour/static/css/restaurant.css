@@ -147,3 +147,6 @@ th {
 .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
     outline: white;
 }
+.map-modal.modal-lg {
+  padding-top: 50px;
+}

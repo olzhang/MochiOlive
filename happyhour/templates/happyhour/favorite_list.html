@@ -1,11 +1,6 @@
 {% extends "favorites_base.html" %}
 
 {% block favorite-restaurants %}
-<script type="text/javascript">
-	$(document).ready(function(){
-	    $('.fav-options').hide();
-	});
-</script>
 <table>
   <thead>
       <tr>
@@ -23,23 +18,44 @@
         <td>{{ fav.restaurant.phone_number }}</td>
         <td>{{ fav.restaurant.rating }}</td>
       </tr>
-      <tr>
-      	<td colspan="4" id="{{forloop.counter}}-info" class="fav-options">
+      <tr id="{{forloop.counter}}-info" style="display: none;">
+      	<td colspan="4" class="fav-options">
       		Options
       		<ul>
       			<button id="" type="button" class="btn btn-favorites" onclick="">
         			<span class="glyphicon glyphicon-minus"></span>
         			<span>  </span><span id="btn-text">Unfavorite</span>
         		</button>
-      			<button id="" type="button" class="btn btn-favorites" onclick="">
+      			<button id="map-favorite" type="button" class="btn btn-favorites" data-toggle="modal" data-target="#myModal" onclick="">
         			<span class="glyphicon glyphicon-globe"></span>
         			<span>  </span><span id="btn-text">View on Map</span>
         		</button>
       		</ul>
-
       	</td>
       </tr>
     {% endfor %}
  </tbody>
 </table>
+
+<!-- Modal for map -->
+  <div class="modal" id="myModal" role="dialog">
+    <div class="modal-lg map-modal">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <div id="dvMap" style="height: 500px; width: 100%;">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
 {% endblock %}

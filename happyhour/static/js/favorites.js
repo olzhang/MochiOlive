@@ -75,5 +75,33 @@ function getUserFavorites(user){
 
 function triggerOptions(id){
 	var element = "#" + id + "-info";
-	jQuery(element).slideToggle('fast');
+	if(jQuery(element).css('display') === 'none'){
+		jQuery(element).show('slow');
+	}
+	else {
+		jQuery(element).hide();
+	}
 }
+
+console.log("asdf");
+
+$('#map-favorite').click(function(){
+	triggerMap();
+});
+
+$('#myModal').on('shown.bs.modal', function() {
+	google.maps.event.trigger(favMap, "resize");
+});
+
+var favMap;
+function triggerMap() {
+    var options={
+        center: {lat: 49.25, lng: -123.1},
+        zoom: 10
+    	};
+    favMap = new google.maps.Map(document.getElementById('dvMap'), options);   
+}
+
+
+
+
