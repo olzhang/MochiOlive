@@ -24,11 +24,20 @@ function addUserFavorite(markerId, user, restaurant){
 		if(status == 'success'){
 			var elementId = "#%s";
 			var element = elementId.replace('%s', markerId);
-			jQuery(element).css("background-color", "rgb(215, 222, 216)");
-			jQuery(element).find('span.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-ok');
-			jQuery(element).find('span#btn-text').text('Favorited');	
-			jQuery(element).attr('onclick', "deleteUserFavorite(this.id, userId, " + restaurant + ")");
-			restaurants.push(restaurant);
+			var glyphType = jQuery(element).find('span.glyphicon').attr('class');
+			if(glyphType.indexOf('plus') > -1){
+				jQuery(element).css("background-color", "rgb(215, 222, 216)");
+				jQuery(element).find('span.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-ok');
+				jQuery(element).find('span#btn-text').text('Favorited');	
+				jQuery(element).attr('onclick', "deleteUserFavorite(this.id, userId, " + restaurant + ")");
+				restaurants.push(restaurant);
+			}
+			else if(glyphType.indexOf('ok') > -1){
+				jQuery(element).css("background-color", "rgba(193, 220, 194, 0.75)");
+				jQuery(element).find('span.glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-minus');
+				jQuery(element).find('span#btn-text').text('Unfavorite');	
+				jQuery(element).attr('onclick', "deleteUserFavorite(this.id, userId, " + restaurant + ")");				
+			}
 		}
 	});
 
@@ -44,12 +53,22 @@ function deleteUserFavorite(markerId, user, restaurant){
     	success: function(result) {
 	        var elementId = "#%s"; 
 	        var element = elementId.replace('%s', markerId);
-			jQuery(element).css("background-color", "rgba(193, 220, 194, 0.75)");
-			jQuery(element).find('span.glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-plus');
-			jQuery(element).find('span#btn-text').text('Favorite');	
-			jQuery(element).attr('onclick', "addUserFavorite(this.id, userId, " + restaurant + ")");
-			var index = restaurants.indexOf(restaurant);
-			restaurants.splice(index, 1);	        
+			var glyphType = jQuery(element).find('span.glyphicon').attr('class');
+			// Distinguishing between fav button in favorites page or main page. 
+			if(glyphType.indexOf('ok') > -1) { 
+				jQuery(element).css("background-color", "rgba(193, 220, 194, 0.75)");
+				jQuery(element).find('span.glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-plus');
+				jQuery(element).find('span#btn-text').text('Favorite');	
+				jQuery(element).attr('onclick', "addUserFavorite(this.id, userId, " + restaurant + ")");
+				var index = restaurants.indexOf(restaurant);
+				restaurants.splice(index, 1);	        
+			}
+			else if(glyphType.indexOf('minus') > -1){
+				jQuery(element).css("background-color", "rgb(215, 222, 216)");
+				jQuery(element).find('span.glyphicon').removeClass('glyphicon-minus').addClass('glyphicon-ok');
+				jQuery(element).find('span#btn-text').text('Unfavorited');	
+				jQuery(element).attr('onclick', "addUserFavorite(this.id, userId, " + restaurant + ")");
+			}
 	    }
 	});
 }
