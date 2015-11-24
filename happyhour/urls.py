@@ -2,6 +2,7 @@ from django.conf.urls import url
 from happyhour import views, restaurant_views, admin_view, favorite_views, auth_view
 from rest_framework.urlpatterns import format_suffix_patterns
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -17,7 +18,7 @@ urlpatterns = [
     url(r'^happy-hour-restaurants/favorites/$', favorite_views.FavoritesView.as_view()),
     url(r'^happy-hour-restaurants/admin$', 'django.contrib.auth.views.login', {'template_name': 'happyhour/admin_login.html'}),
     url(r'^login/admin/$', 'django.contrib.auth.views.login', {'template_name': 'happyhour/admin_login.html'}),
-    url(r'^admin/dashboard/$', login_required(admin_view.RestaurantAdmin.as_view()), name='restaurant_list_admin'),
+    url(r'^admin/dashboard/$', login_required(staff_member_required(admin_view.RestaurantAdmin.as_view(), login_url="/login/admin")), name='restaurant_list_admin'),
     url(r'^admin/dashboard/filter/$', admin_view.RestaurantFilter.as_view()),
     url(r'^admin/dashboard/update/$', admin_view.RestaurantUpdate.as_view()),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/happy-hour-restaurants/'}),
