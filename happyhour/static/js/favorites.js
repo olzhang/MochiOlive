@@ -83,24 +83,23 @@ function triggerOptions(id){
 	}
 }
 
-console.log("asdf");
-
-$('#map-favorite').click(function(){
-	triggerMap();
-});
-
 $('#myModal').on('shown.bs.modal', function() {
 	google.maps.event.trigger(favMap, "resize");
-	map.setCenter(new google.maps.LatLng(49.25, -123.1));
+	var latLng = marker.getPosition()
+	favMap.setCenter(latLng);
 });
 
 var favMap;
-function triggerMap() {
+function triggerMap(lat, lng) {
     var options={
-        center: {lat: 49.25, lng: -123.1},
+        center: {lat: lat, lng: lng},
         zoom: 10
     	};
     favMap = new google.maps.Map(document.getElementById('dvMap'), options);   
+    var latlng = new google.maps.LatLng(lat, lng);
+    var markerOptions = {position: latlng, title: 'favorite restaurant'};
+    marker = new google.maps.Marker(markerOptions);
+    marker.setMap(favMap);
 }
 
 
