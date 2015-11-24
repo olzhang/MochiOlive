@@ -22,7 +22,7 @@
       	<td colspan="4" class="fav-options">
       		Options
       		<ul>
-      			<button id="" type="button" class="btn btn-favorites" onclick="">
+      			<button id="unfavorite-{{forloop.counter}}" type="button" class="btn btn-favorites" onclick="deleteUserFavorite(this.id, userId, {{fav.restaurant.id}})">
         			<span class="glyphicon glyphicon-minus"></span>
         			<span>  </span><span id="btn-text">Unfavorite</span>
         		</button>
@@ -51,6 +51,7 @@
           <div id="dvMap" style="height: 500px; width: 100%;">
         </div>
         <div class="modal-footer">
+          <button id="route" type="button" class="btn btn-default" onclick="calcRoute()">Get Route</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -58,4 +59,12 @@
   </div>
 </div>
   
+{% endblock %}
+
+{% block user_id %}
+  <script type="text/javascript">
+    {% if user %}
+      var userId = String({{user.id}})
+    {% endif %}
+  </script>
 {% endblock %}

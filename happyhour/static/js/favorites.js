@@ -24,11 +24,20 @@ function addUserFavorite(markerId, user, restaurant){
 		if(status == 'success'){
 			var elementId = "#%s";
 			var element = elementId.replace('%s', markerId);
-			jQuery(element).css("background-color", "rgb(215, 222, 216)");
-			jQuery(element).find('span.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-ok');
-			jQuery(element).find('span#btn-text').text('Favorited');	
-			jQuery(element).attr('onclick', "deleteUserFavorite(this.id, userId, " + restaurant + ")");
-			restaurants.push(restaurant);
+			var glyphType = jQuery(element).find('span.glyphicon').attr('class');
+			if(glyphType.indexOf('plus') > -1){
+				jQuery(element).css("background-color", "rgb(215, 222, 216)");
+				jQuery(element).find('span.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-ok');
+				jQuery(element).find('span#btn-text').text('Favorited');	
+				jQuery(element).attr('onclick', "deleteUserFavorite(this.id, userId, " + restaurant + ")");
+				restaurants.push(restaurant);
+			}
+			else if(glyphType.indexOf('ok') > -1){
+				jQuery(element).css("background-color", "rgba(193, 220, 194, 0.75)");
+				jQuery(element).find('span.glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-minus');
+				jQuery(element).find('span#btn-text').text('Unfavorite');	
+				jQuery(element).attr('onclick', "deleteUserFavorite(this.id, userId, " + restaurant + ")");				
+			}
 		}
 	});
 
@@ -44,12 +53,22 @@ function deleteUserFavorite(markerId, user, restaurant){
     	success: function(result) {
 	        var elementId = "#%s"; 
 	        var element = elementId.replace('%s', markerId);
-			jQuery(element).css("background-color", "rgba(193, 220, 194, 0.75)");
-			jQuery(element).find('span.glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-plus');
-			jQuery(element).find('span#btn-text').text('Favorite');	
-			jQuery(element).attr('onclick', "addUserFavorite(this.id, userId, " + restaurant + ")");
-			var index = restaurants.indexOf(restaurant);
-			restaurants.splice(index, 1);	        
+			var glyphType = jQuery(element).find('span.glyphicon').attr('class');
+			// Distinguishing between fav button in favorites page or main page. 
+			if(glyphType.indexOf('ok') > -1) { 
+				jQuery(element).css("background-color", "rgba(193, 220, 194, 0.75)");
+				jQuery(element).find('span.glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-plus');
+				jQuery(element).find('span#btn-text').text('Favorite');	
+				jQuery(element).attr('onclick', "addUserFavorite(this.id, userId, " + restaurant + ")");
+				var index = restaurants.indexOf(restaurant);
+				restaurants.splice(index, 1);	        
+			}
+			else if(glyphType.indexOf('minus') > -1){
+				jQuery(element).css("background-color", "rgb(215, 222, 216)");
+				jQuery(element).find('span.glyphicon').removeClass('glyphicon-minus').addClass('glyphicon-ok');
+				jQuery(element).find('span#btn-text').text('Unfavorited');	
+				jQuery(element).attr('onclick', "addUserFavorite(this.id, userId, " + restaurant + ")");
+			}
 	    }
 	});
 }
@@ -69,7 +88,6 @@ function getUserFavorites(user){
 			});
 		}
 	});
-	console.log(items);
 	return items; 
 }
 
@@ -90,39 +108,51 @@ $('#myModal').on('shown.bs.modal', function() {
 	renderCurrentPosition();
 });
 
+
 var favMap;
+var directionsService = new google.maps.DirectionsService();
+var directionsDisplay;
+var myLatLng;
+var latlng;
+var marker;
 // Trigger modal map in favorites page to load. 
 function triggerMap(lat, lng, name) {
+	directionsDisplay = new google.maps.DirectionsRenderer();
     var options={
         center: {lat: lat, lng: lng},
         zoom: 12
     	};
-    favMap = new google.maps.Map(document.getElementById('dvMap'), options);   
-    var latlng = new google.maps.LatLng(lat, lng);
+    favMap = new google.maps.Map(document.getElementById('dvMap'), options); 
+    directionsDisplay.setMap(favMap);  
+    latlng = new google.maps.LatLng(lat, lng);
     var markerOptions = {position: latlng, title: name};
     marker = new google.maps.Marker(markerOptions);
     marker.setMap(favMap);
-    renderCurrentPosition();
     jQuery(".modal-title").text(name);
 }
 
 // Render current position on favorites map 
+var currLocationMarker;
 function renderCurrentPosition(){
     var pinImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/yellow-dot.png");
     if (navigator.geolocation) {
 	    navigator.geolocation.getCurrentPosition(function(position) {
-	      var pos = {
+	      myLatLng = {
 	        lat: position.coords.latitude,
 	        lng: position.coords.longitude
 	      };
-			var currLocationMarker = new google.maps.Marker({
-				position: pos, 
+			currLocationMarker = new google.maps.Marker({
+				position: myLatLng, 
 				icon: pinImage, 
 				title: "Current location"
 			});
 			currLocationMarker.setMap(favMap);
 	    });
 	} 
+}
+
+function calcRoute(){
+	calculateAndDisplayRoute(directionsService, directionsDisplay, latlng);
 }
 
 
