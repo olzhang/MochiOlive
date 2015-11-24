@@ -40,7 +40,14 @@
               <div class="clear"> </div>
               <h2>New Account:</h2>
               {% if form.errors %}
-              <p>There are errors with the field below please try again</p>
+                  {% for field in form %}
+                      {% for error in field.errors %}
+                            <p>{{error}}</p>
+                      {% endfor %}
+                  {% endfor %}
+                  {% for error in form.non_field_errors %}
+                      <p>{{error}}</p>
+                  {% endfor %}
               {% endif %}
               <form method="post" action="/register/user/">
               {% csrf_token %}
