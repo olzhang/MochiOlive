@@ -91,6 +91,7 @@ $('#map-favorite').click(function(){
 
 $('#myModal').on('shown.bs.modal', function() {
 	google.maps.event.trigger(favMap, "resize");
+	map.setCenter(new google.maps.LatLng(49.25, -123.1));
 });
 
 var favMap;
