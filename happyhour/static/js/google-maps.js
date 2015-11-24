@@ -15,7 +15,7 @@ function initGoogleMap() {
     directionsDisplay = new google.maps.DirectionsRenderer;
     map = new google.maps.Map(document.getElementById('map'), options);
     directionsDisplay.setMap(map);
-}
+  }
 
 window.onload = function() {
   var startPos;
@@ -112,11 +112,9 @@ return(
           '<span class="col">Rating : </span>'+restaurant.rating +
       '</p>'+
     '</div>' + favoritesButton +
-    '<button id="tweetbtn" type="button" class="btn btn-favorites"' +
     '<span>' +
-    '<a href="https://twitter.com/intent/tweet?button_hashtag=MochiOliveHappyHour&text=My%20Happy%20Hour%20experience%20at ' + restaurant.name +'" class="twitter-hashtag-button">Tweet My Experience</a>' +
+    '<a href="https://twitter.com/intent/tweet?button_hashtag=MochiOliveHappyHour&text=My%20Happy%20Hour%20experience%20at ' + restaurant.name +'" class="btn twitter-hashtag-button">Tweet My Experience</a>' +
     '</span>' +
-    '</button>' +
     '</div>' +
   '</div>');
 }
@@ -201,8 +199,8 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, end) {
     travelMode: google.maps.TravelMode.WALKING
     }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
-      console.log('Directions mapped');
-
+      directionsDisplay.setOptions({ preserveViewport: true });
+      directionsDisplay.setOptions({ suppressMarkers: true });
       directionsDisplay.setDirections(response);
     } else {
       window.alert('Directions request failed due to ' + status);
