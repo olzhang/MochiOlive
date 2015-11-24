@@ -69,7 +69,6 @@ function getUserFavorites(user){
 			});
 		}
 	});
-	console.log(items);
 	return items; 
 }
 
@@ -90,39 +89,51 @@ $('#myModal').on('shown.bs.modal', function() {
 	renderCurrentPosition();
 });
 
+
 var favMap;
+var directionsService = new google.maps.DirectionsService();
+var directionsDisplay;
+var myLatLng;
+var latlng;
+var marker;
 // Trigger modal map in favorites page to load. 
 function triggerMap(lat, lng, name) {
+	directionsDisplay = new google.maps.DirectionsRenderer();
     var options={
         center: {lat: lat, lng: lng},
         zoom: 12
     	};
-    favMap = new google.maps.Map(document.getElementById('dvMap'), options);   
-    var latlng = new google.maps.LatLng(lat, lng);
+    favMap = new google.maps.Map(document.getElementById('dvMap'), options); 
+    directionsDisplay.setMap(favMap);  
+    latlng = new google.maps.LatLng(lat, lng);
     var markerOptions = {position: latlng, title: name};
     marker = new google.maps.Marker(markerOptions);
     marker.setMap(favMap);
-    renderCurrentPosition();
     jQuery(".modal-title").text(name);
 }
 
 // Render current position on favorites map 
+var currLocationMarker;
 function renderCurrentPosition(){
     var pinImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/yellow-dot.png");
     if (navigator.geolocation) {
 	    navigator.geolocation.getCurrentPosition(function(position) {
-	      var pos = {
+	      myLatLng = {
 	        lat: position.coords.latitude,
 	        lng: position.coords.longitude
 	      };
-			var currLocationMarker = new google.maps.Marker({
-				position: pos, 
+			currLocationMarker = new google.maps.Marker({
+				position: myLatLng, 
 				icon: pinImage, 
 				title: "Current location"
 			});
 			currLocationMarker.setMap(favMap);
 	    });
 	} 
+}
+
+function calcRoute(){
+	calculateAndDisplayRoute(directionsService, directionsDisplay, latlng);
 }
 
 
