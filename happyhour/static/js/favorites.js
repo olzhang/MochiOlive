@@ -92,17 +92,18 @@ $('#myModal').on('shown.bs.modal', function() {
 
 var favMap;
 // Trigger modal map in favorites page to load. 
-function triggerMap(lat, lng) {
+function triggerMap(lat, lng, name) {
     var options={
         center: {lat: lat, lng: lng},
         zoom: 12
     	};
     favMap = new google.maps.Map(document.getElementById('dvMap'), options);   
     var latlng = new google.maps.LatLng(lat, lng);
-    var markerOptions = {position: latlng, title: 'favorite restaurant'};
+    var markerOptions = {position: latlng, title: name};
     marker = new google.maps.Marker(markerOptions);
     marker.setMap(favMap);
     renderCurrentPosition();
+    jQuery(".modal-title").text(name);
 }
 
 // Render current position on favorites map 

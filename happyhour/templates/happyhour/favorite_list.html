@@ -26,7 +26,7 @@
         			<span class="glyphicon glyphicon-minus"></span>
         			<span>  </span><span id="btn-text">Unfavorite</span>
         		</button>
-      			<button id="map-favorite" type="button" class="btn btn-favorites" data-toggle="modal" data-target="#myModal" onclick="triggerMap({{fav.restaurant.location_lat}}, {{fav.restaurant.location_long}})">
+      			<button id="map-favorite" type="button" class="btn btn-favorites" data-toggle="modal" data-target="#myModal" onclick="triggerMap({{fav.restaurant.location_lat}}, {{fav.restaurant.location_long}}, '{{fav.restaurant.name}}')">
         			<span class="glyphicon glyphicon-globe"></span>
         			<span>  </span><span id="btn-text">View on Map</span>
         		</button>
@@ -45,7 +45,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Map</h4>
         </div>
         <div class="modal-body">
           <div id="dvMap" style="height: 500px; width: 100%;">
