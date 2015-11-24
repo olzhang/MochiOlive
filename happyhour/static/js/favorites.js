@@ -87,19 +87,41 @@ $('#myModal').on('shown.bs.modal', function() {
 	google.maps.event.trigger(favMap, "resize");
 	var latLng = marker.getPosition()
 	favMap.setCenter(latLng);
+	renderCurrentPosition();
 });
 
 var favMap;
+// Trigger modal map in favorites page to load. 
 function triggerMap(lat, lng) {
     var options={
         center: {lat: lat, lng: lng},
-        zoom: 10
+        zoom: 12
     	};
     favMap = new google.maps.Map(document.getElementById('dvMap'), options);   
     var latlng = new google.maps.LatLng(lat, lng);
     var markerOptions = {position: latlng, title: 'favorite restaurant'};
     marker = new google.maps.Marker(markerOptions);
     marker.setMap(favMap);
+    renderCurrentPosition();
+}
+
+// Render current position on favorites map 
+function renderCurrentPosition(){
+    var pinImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/yellow-dot.png");
+    if (navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(function(position) {
+	      var pos = {
+	        lat: position.coords.latitude,
+	        lng: position.coords.longitude
+	      };
+			var currLocationMarker = new google.maps.Marker({
+				position: pos, 
+				icon: pinImage, 
+				title: "Current location"
+			});
+			currLocationMarker.setMap(favMap);
+	    });
+	} 
 }
 
 
