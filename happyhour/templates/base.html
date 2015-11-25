@@ -55,14 +55,19 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/happy-hour-restaurants/">Happy Hour</a></li>
+            {% if request.user.is_authenticated %}
             <li><a href="/happy-hour-restaurants/favorites/">Favorites</a></li>
+            {% endif %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if request.user.is_authenticated %}{% load account %}
             <li class ="welcome">Welcome {% user_display user %} </li>
             <li><a href="{% url 'django.contrib.auth.views.logout' %}">Logout <span class="sr-only">(current)</span></a></li>
             <li><a href="/login/admin">Login as Admin <span class="sr-only">(current)</span></a></li>
-            {% else %}<li class ="welcome">Welcome Guest</li>{% endif %}
+            {% else %}
+            <li class ="welcome">Welcome Guest</li>
+            <li><a href="/">Login</a></li>
+            {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>

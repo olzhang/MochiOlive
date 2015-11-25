@@ -19,7 +19,8 @@
 
     <!-- Extra styles for template-->
     <link href="/static/css/restaurant.css" rel="stylesheet">
-    <link href="/static/css/infowindow.css" rel="stylesheet">
+    <link href="/static/css/favorites.css" rel="stylesheet">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
     {% block user_id %}{% endblock %}
@@ -59,11 +60,10 @@
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBipSwW57GzeWk10zbZ8bZtcDKaCy2U8ls&"></script>
 
     <div class="container-mochi center-image">
-        <div id="wrapper" class="favorites-table">
-          <div id="favoritesColumn" align="center">
+      <h2 class="favorites-title"><img class="fav-mochi mochi-1" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/> <img class="fav-mochi mochi-2" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/> <img class="fav-mochi mochi-3" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/> <img class="fav-mochi mochi-4" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/> <img class="fav-mochi mochi-5" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/>  My Favorites  <img class="fav-mochi mochi-5" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/> <img class="fav-mochi mochi-4" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/> <img class="fav-mochi mochi-3" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/> <img class="fav-mochi mochi-2" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/> <img class="fav-mochi mochi-1" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/></h2>
+        <div id="wrapper favorites-wrapper">
+          <div id="favoritesColumn" align="center" class="favorites-table">
             {% block favorite-restaurants %} {% endblock %}
-              
-
           </div>
     </div> <!-- /container -->
 

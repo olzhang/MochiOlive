@@ -1,6 +1,8 @@
 {% extends "favorites_base.html" %}
 
 {% block favorite-restaurants %}
+
+{% if favorites %}
 <table>
   <thead>
       <tr>
@@ -20,7 +22,7 @@
       </tr>
       <tr id="{{forloop.counter}}-info" style="display: none;">
       	<td colspan="4" class="fav-options">
-      		Options
+      		<p class="options-dropdown">Options</p>
       		<ul>
       			<button id="unfavorite-{{forloop.counter}}" type="button" class="btn btn-favorites" onclick="deleteUserFavorite(this.id, userId, {{fav.restaurant.id}})">
         			<span class="glyphicon glyphicon-minus"></span>
@@ -58,7 +60,9 @@
     </div>
   </div>
 </div>
-  
+{% else %}    
+<h4 class="no-favorites">You haven't added any favorites yet...<a href="/happy-hour-restaurants">Click here</a> to go back and add some favorite restaurants!</h4>
+{% endif %}
 {% endblock %}
 
 {% block user_id %}
