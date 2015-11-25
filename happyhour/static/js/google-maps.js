@@ -102,6 +102,7 @@ function bindInfoWindow(marker, map, infowindow, restaurant, latlng) {
 function setInfo(restaurant, latlng) {
   var favoritesButton = setFavButton(restaurant);
   var routeButton = setRouteButton(latlng);
+  var tweetButton = setTweetButton(restaurant);
 return(
   '<div id="iw_container">' +
     '<div class="iw_title">'+ restaurant.name+'</div>' +
@@ -112,10 +113,7 @@ return(
           '<span class="col">Phone : </span>'+ restaurant.phone_number + '<br>' +
           '<span class="col">Rating : </span>'+restaurant.rating +
       '</p>'+
-    '</div>' + favoritesButton +
-    '<span>' +
-    '<a href="https://twitter.com/intent/tweet?button_hashtag=MochiOliveHappyHour&text=My%20Happy%20Hour%20experience%20at ' + restaurant.name +'" class="btn twitter-hashtag-button">Tweet My Experience</a>' +
-    '</span>' + routeButton +
+    '</div>' + favoritesButton + routeButton + tweetButton + 
   '</div>');
 }
 
@@ -126,13 +124,13 @@ function setFavButton(restaurant){
       favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id + 
           '" type="button" class="btn btn-favorites btn-favorited" onclick="deleteUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
           '<span class="glyphicon glyphicon-ok"></span><span>  </span><span id="btn-text">Favorited</span>' + '</button>' + 
-          '</div>' + '<div class="btn-group">';
+          '</div>';
     }
     else {
       favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id + 
         '" type="button" class="btn btn-favorites" onclick="addUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
         '<span class="glyphicon glyphicon-plus"></span><span>  </span><span id="btn-text">Favorite</span>' + '</button>' + 
-        '</div>' + '<div class="btn-group">';
+        '</div>';
     }
   }
   else { 
@@ -143,25 +141,24 @@ function setFavButton(restaurant){
 
 function setRouteButton(latlng){
     var routeDiv;
-      /*routeDiv = document.createElement('div');
-      routeDiv.className = 'btn-group';
-
-      var routeBtn = document.createElement('button');
-      routeBtn.id = 'route_btn';
-      routeBtn.type = 'button';
-      routeBtn.className = 'btn';
-      routeBtn.onclick=function(){calculateAndDisplayRoute(directionsService, directionsDisplay,latlng)};
-      routeDiv.appendChild(routeBtn);*/
-
-      routeDiv =  '<div class="btn-group">' + 
+      routeDiv =  '<div class="btn-group favorites-map">' + 
                     '<button id="route_btn"' +
-                        'type="button" class="btn"' +
+                        'type="button" class="btn btn-favorites"' +
                         'onclick="calculateAndDisplayRoute(directionsService, directionsDisplay, currentMarkerLatlng)">' +
                         '<span class="glyphicon glyphicon-globe"></span>' +
-                        '<span id="btn-text">Plot direction</span>' +
-                        '</button>' +
-                  '</div>';
+                        '<span id="btn-text"> Plot direction </span>' +
+                        '</button>' + 
+                        '</div>';
   return routeDiv;
+}
+
+function setTweetButton(restaurant){
+  var tweetDiv;
+    tweetDiv = '<div class="btn-group favorites-map">' + 
+                    '<a href="https://twitter.com/intent/tweet?button_hashtag=MochiOliveHappyHour&text=My%20Happy%20Hour%20experience%20at ' + restaurant.name +'" class="btn btn-favorites">' + '<span class="glyphicon glyphicon-comment"></span>' +
+                     '<span id="btn-text"> Tweet my experience </span>' + '</a>' +
+              '</div>';
+  return tweetDiv;
 }
 
 
