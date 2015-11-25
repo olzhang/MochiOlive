@@ -74,9 +74,9 @@ window.onload = function() {
  }
 //attach the infowindow to marker
 function bindInfoWindow(marker, map, infowindow, restaurant, latlng) {
-    infowindow.setContent(setInfo(restaurant));
+    infowindow.setContent(setInfo(restaurant, latlng));
     google.maps.event.addListener(marker, 'click', function() {
-        calculateAndDisplayRoute(directionsService, directionsDisplay,latlng);
+        //calculateAndDisplayRoute(directionsService, directionsDisplay,latlng);
         closePreviousInfoWindow();
         if(prev_infowindow == infowindow) {
            prev_infowindow.close();
@@ -99,8 +99,9 @@ function bindInfoWindow(marker, map, infowindow, restaurant, latlng) {
     */
 }
 
-function setInfo(restaurant) {
+function setInfo(restaurant, latlng) {
   var favoritesButton = setFavButton(restaurant);
+  var routeButton = setRouteButton(latlng);
 return(
   '<div id="iw_container">' +
     '<div class="iw_title">'+ restaurant.name+'</div>' +
@@ -114,8 +115,7 @@ return(
     '</div>' + favoritesButton +
     '<span>' +
     '<a href="https://twitter.com/intent/tweet?button_hashtag=MochiOliveHappyHour&text=My%20Happy%20Hour%20experience%20at ' + restaurant.name +'" class="btn twitter-hashtag-button">Tweet My Experience</a>' +
-    '</span>' +
-    '</div>' +
+    '</span>' + routeButton +
   '</div>');
 }
 
@@ -141,11 +141,37 @@ function setFavButton(restaurant){
   return favoritesButton;
 }
 
+function setRouteButton(latlng){
+    var routeDiv;
+      /*routeDiv = document.createElement('div');
+      routeDiv.className = 'btn-group';
+
+      var routeBtn = document.createElement('button');
+      routeBtn.id = 'route_btn';
+      routeBtn.type = 'button';
+      routeBtn.className = 'btn';
+      routeBtn.onclick=function(){calculateAndDisplayRoute(directionsService, directionsDisplay,latlng)};
+      routeDiv.appendChild(routeBtn);*/
+
+      routeDiv =  '<div class="btn-group">' + 
+                    '<button id="route_btn"' +
+                        'type="button" class="btn"' +
+                        'onclick="calculateAndDisplayRoute(directionsService, directionsDisplay, currentMarkerLatlng)">' +
+                        '<span class="glyphicon glyphicon-globe"></span>' +
+                        '<span id="btn-text">Plot direction</span>' +
+                        '</button>' +
+                  '</div>';
+  return routeDiv;
+}
+
+
 function closePreviousInfoWindow(){
   if( prev_infowindow ) {
     prev_infowindow.close();
   }
 }
+
+var currentMarkerLatlng;
 
 // Mark all happy hour restaurants on map
 function markPoint(){
@@ -161,7 +187,9 @@ function markPoint(){
         var marker = new google.maps.Marker(options);
         var infowindow =  new google.maps.InfoWindow();
         // marker.setMap(map);
-
+        marker.addListener('click', function() {
+          currentMarkerLatlng = this.getPosition();
+        });
         bindInfoWindow(marker, map, infowindow, restaurant, latlng);
         infowindows.push(infowindow);
         markers.push(marker);
