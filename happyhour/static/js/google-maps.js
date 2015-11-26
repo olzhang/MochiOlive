@@ -65,10 +65,12 @@ window.onload = function() {
   infowindow.open(map, currentMarker);
   prev_infowindow = infowindow;
   prev_marker = currentMarker;
+  
+     currentMarkerLatlng = currentMarker.getPosition();
 
    google.maps.event.addListener(map, 'click', function() {
      infowindow.close();
-    cluster.addMarker(currentMarker);
+     cluster.addMarker(currentMarker);
    });
  }
 //attach the infowindow to marker
