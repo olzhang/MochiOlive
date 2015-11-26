@@ -14,7 +14,6 @@ function initGoogleMap() {
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer;
     map = new google.maps.Map(document.getElementById('map'), options);
-    directionsDisplay.setMap(map);
   }
 
 window.onload = function() {
@@ -144,11 +143,11 @@ function setRouteButton(latlng){
       routeDiv =  '<div class="btn-group favorites-map">' + 
                     '<button id="route_btn"' +
                         'type="button" class="btn btn-favorites"' +
-                        'onclick="calculateAndDisplayRoute(directionsService, directionsDisplay, currentMarkerLatlng)">' +
+                        'onclick="toggleRoute(directionsService, directionsDisplay, currentMarkerLatlng)">' +
                         '<span class="glyphicon glyphicon-globe"></span>' +
                         '<span id="btn-text"> Plot direction </span>' +
-                        '</button>' + 
-                        '</div>';
+                      '</button>' + 
+                    '</div>';
   return routeDiv;
 }
 
@@ -210,13 +209,25 @@ function getData(){
   return items;
 }
 
+function toggleRoute(directionsService, directionsDisplay, end) {
+  if (directionsDisplay.getMap() != null) {
+    removeRoute();
+  } else {
+    calculateAndDisplayRoute(directionsService, directionsDisplay, end); 
+  }
+}
+
+function removeRoute() {
+    directionsDisplay.setMap(null);
+}
+
 function calculateAndDisplayRoute(directionsService, directionsDisplay, end) {
   if (myLatLng == null) {
     window.alert('Your position has not been set yet, please wait');
     return;
-  } else {
-      //console.log(start.lat);
-  }
+  } 
+
+  directionsDisplay.setMap(map);
   //var tempLatLng = new LatLng (lat: myLatLng.lat, lng: myLatLng.lng);
   directionsService.route({
     origin: myLatLng,
