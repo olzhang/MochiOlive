@@ -127,4 +127,5 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 2
 LOGIN_REDIRECT_URL = '/happy-hour-restaurants/'
 LOGOUT_REDIRECT_URL = '/successful-logout/'
+LOGIN_REDIRECT_URL_ADMIN = '/admin/dashboard/'
 
