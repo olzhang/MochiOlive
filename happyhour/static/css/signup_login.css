@@ -3,6 +3,7 @@ body {
   overflow: hidden;
 }
 
+
 .blur {
   position: absolute;
   top: 20%;
@@ -154,3 +155,18 @@ h2{
 }
 
 
+
+
+.check{
+  margin-top: 20%;
+}
+
+.regSuccess{
+  display: inline-block;
+}
+
+.linkDirect{
+  display: block;
+  color: #4A5E6B;
+  font-size: 15px;
+}

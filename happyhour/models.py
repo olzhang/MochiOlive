@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.signals import user_logged_out
 
 from allauth.account.signals import user_logged_in
 from django.dispatch import receiver
@@ -21,3 +22,7 @@ class Favorites(models.Model):
 @receiver(user_logged_in)
 def user_logged_in_callback(sender, request, user, **kwargs):
     messages.success(request, ("Thank you for signing in with twitter account %(username)s") % {'username': user.username},)
+
+@receiver(user_logged_out)
+def log_logout(sender, request, user, **kwargs):
+     messages.success(request, ("Successfully logged out"))
