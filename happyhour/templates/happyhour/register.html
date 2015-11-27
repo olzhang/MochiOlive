@@ -42,32 +42,42 @@
               </div>
               <div class="clear"> </div>
               <h2>New Account:</h2>
-              {% if form.errors %}
-                  {% for field in form %}
-                      {% for error in field.errors %}
-                            <p>{{error}}</p>
-                      {% endfor %}
-                  {% endfor %}
-                  {% for error in form.non_field_errors %}
-                      <p>{{error}}</p>
-                  {% endfor %}
-              {% endif %}
               <form method="post" action="/register/user/">
               {% csrf_token %}
                 <div>
                 <ul style="list-style:none;">
+                  <div style="display:inline-block">
+                  {% for error in form.username.errors %}
+                    <p>{{error}}</p>
+                  {% endfor %}
+                  </div>
                   <li>
                   {{ form.username.label_tag }}
                   {{ form.username }}
                   </li>
+                  <div style="display:inline-block">
+                  {% for error in form.email.errors %}
+                    <p>{{error}}</p>
+                  {% endfor %}
+                  </div>
                   <li>
                   {{ form.email.label_tag }}
                   {{ form.email }}
                   </li>
+                  <div style="display:inline-block">
+                  {% for error in form.password1.errors %}
+                    <p>{{error}}</p>
+                  {% endfor %}
+                  </div>
                   <li>
                   {{ form.password1.label_tag }}
                   {{ form.password1 }}
                   </li>
+                  <div style="display:inline-block">
+                  {% for error in form.password2.errors %}
+                    <p>{{error}}</p>
+                  {% endfor %}
+                  </div>
                   <li>
                   {{ form.password2.label_tag }}
                   {{ form.password2 }}

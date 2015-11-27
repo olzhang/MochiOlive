@@ -1,0 +1,259 @@
+[
+   {
+      "is_claimed":true,
+      "rating":4.5,
+      "mobile_url":"http://m.yelp.com/biz/lord-george-san-francisco",
+      "rating_img_url":"http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+      "review_count":52,
+      "name":"Lord George",
+      "rating_img_url_small":"http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+      "url":"http://www.yelp.com/biz/lord-george-san-francisco",
+      "is_closed":false,
+      "id":"lord-george-san-francisco",
+      "phone":"4156607633",
+      "snippet_text":"Impressive, attentive, generous.\n\nThis a fantastic option for gathering after work with friends for deftly crafted cocktails, huge charcuterie plates, and...",
+      "image_url":"http://s3-media3.fl.yelpcdn.com/bphoto/vGW2V5WmLVTsEP66UqKCtw/ms.jpg",
+      "snippet_image_url":"http://s3-media3.fl.yelpcdn.com/photo/ieYzDG_9TyyZWa76J_ZtYA/ms.jpg",
+      "display_phone":"+1-415-660-7633",
+      "rating_img_url_large":"http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+      "menu_provider":"single_platform",
+      "menu_date_updated":1447925631,
+      "categories":[
+         [
+            "Cocktail Bars",
+            "cocktailbars"
+         ],
+         [
+            "Gastropubs",
+            "gastropubs"
+         ]
+      ],
+      "location":{
+         "city":"San Francisco",
+         "display_address":[
+            "555 2nd St",
+            "SoMa",
+            "San Francisco, CA 94107"
+         ],
+         "geo_accuracy":9.5,
+         "neighborhoods":[
+            "SoMa",
+            "South Beach"
+         ],
+         "postal_code":"94107",
+         "country_code":"US",
+         "address":[
+            "555 2nd St"
+         ],
+         "coordinate":{
+            "latitude":37.7824636931654,
+            "longitude":-122.392651699483
+         },
+         "state_code":"CA"
+      }
+   },
+   {
+      "is_claimed":true,
+      "rating":4.0,
+      "mobile_url":"http://m.yelp.com/biz/the-social-study-san-francisco",
+      "rating_img_url":"http://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+      "review_count":285,
+      "name":"The Social Study",
+      "rating_img_url_small":"http://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+      "url":"http://www.yelp.com/biz/the-social-study-san-francisco",
+      "is_closed":false,
+      "phone":"4152927417",
+      "snippet_text":"Favorite bar / study in the neighborhood. 90% of the times I would get Sweep the Leg, which has soju, thyme, lemon, pineapple, and cucumber. Never knew the...",
+      "image_url":"http://s3-media4.fl.yelpcdn.com/bphoto/djMt_flG_fJyYTDr0JaREg/ms.jpg",
+      "snippet_image_url":"http://s3-media3.fl.yelpcdn.com/photo/CssXSWmvi1xH6giF1kjuhw/ms.jpg",
+      "display_phone":"+1-415-292-7417",
+      "rating_img_url_large":"http://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+      "id":"the-social-study-san-francisco",
+      "categories":[
+         [
+            "Wine Bars",
+            "wine_bars"
+         ],
+         [
+            "Cafes",
+            "cafes"
+         ]
+      ],
+      "location":{
+         "cross_streets":"Webster St",
+         "city":"San Francisco",
+         "display_address":[
+            "1795 Geary Blvd",
+            "Fillmore",
+            "San Francisco, CA 94115"
+         ],
+         "geo_accuracy":9.5,
+         "neighborhoods":[
+            "Fillmore",
+            "Western Addition",
+            "Lower Pacific Heights"
+         ],
+         "postal_code":"94115",
+         "country_code":"US",
+         "address":[
+            "1795 Geary Blvd"
+         ],
+         "coordinate":{
+            "latitude":37.7843447,
+            "longitude":-122.4325223
+         },
+         "state_code":"CA"
+      }
+   },
+   {
+      "is_claimed":false,
+      "rating":4.5,
+      "mobile_url":"http://m.yelp.com/biz/hopwater-distribution-san-francisco",
+      "rating_img_url":"http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+      "review_count":368,
+      "name":"Hopwater Distribution",
+      "rating_img_url_small":"http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+      "url":"http://www.yelp.com/biz/hopwater-distribution-san-francisco",
+      "is_closed":false,
+      "phone": "4156607633",
+      "snippet_text":"Was very impressed by the large beer selection. Had the Baeltane Trippel and it was tasty. My only regret is not having the time to try more.\n\nPrices on...",
+      "image_url":"http://s3-media3.fl.yelpcdn.com/bphoto/leZd8OuOjxYuop7xu14s8A/ms.jpg",
+      "snippet_image_url":"http://s3-media1.fl.yelpcdn.com/photo/sM6h9qJKYMUYCMqfC7-p8Q/ms.jpg",
+      "rating_img_url_large":"http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+      "id":"hopwater-distribution-san-francisco",
+      "categories":[
+         [
+            "Pubs",
+            "pubs"
+         ],
+         [
+            "American (Traditional)",
+            "tradamerican"
+         ]
+      ],
+      "location":{
+         "cross_streets":"Taylor St & Mason St",
+         "city":"San Francisco",
+         "display_address":[
+            "850 Bush St",
+            "Nob Hill",
+            "San Francisco, CA 94108"
+         ],
+         "geo_accuracy":9.5,
+         "neighborhoods":[
+            "Nob Hill",
+            "Union Square",
+            "Lower Nob Hill"
+         ],
+         "postal_code":"94108",
+         "country_code":"US",
+         "address":[
+            "850 Bush St"
+         ],
+         "coordinate":{
+            "latitude":37.7899538528782,
+            "longitude":-122.411338984966
+         },
+         "state_code":"CA"
+      }
+   },
+   {
+      "is_claimed":true,
+      "rating":4.0,
+      "mobile_url":"http://m.yelp.com/biz/tempest-san-francisco",
+      "rating_img_url":"http://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+      "review_count":470,
+      "name":"Tempest",
+      "rating_img_url_small":"http://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+      "url":"http://www.yelp.com/biz/tempest-san-francisco",
+      "is_closed":false,
+      "phone":"4154951863",
+      "snippet_text":"Many a bad decision has been made at Tempest, but actually going there is rarely one of them. You already know this place--that place where you know you're...",
+      "image_url":"http://s3-media2.fl.yelpcdn.com/bphoto/yHKio1rD2jSojOAvMiCCGA/ms.jpg",
+      "snippet_image_url":"http://s3-media4.fl.yelpcdn.com/photo/BLTyF60_qte8lGoqCSW_sA/ms.jpg",
+      "display_phone":"+1-415-495-1863",
+      "rating_img_url_large":"http://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+      "id":"tempest-san-francisco",
+      "categories":[
+         [
+            "American (Traditional)",
+            "tradamerican"
+         ],
+         [
+            "Dive Bars",
+            "divebars"
+         ]
+      ],
+      "location":{
+         "cross_streets":"5th St & Mary St",
+         "city":"San Francisco",
+         "display_address":[
+            "431 Natoma St",
+            "SoMa",
+            "San Francisco, CA 94103"
+         ],
+         "geo_accuracy":9.5,
+         "neighborhoods":[
+            "SoMa"
+         ],
+         "postal_code":"94103",
+         "country_code":"US",
+         "address":[
+            "431 Natoma St"
+         ],
+         "coordinate":{
+            "latitude":37.7812215727578,
+            "longitude":-122.40627989109
+         },
+         "state_code":"CA"
+      }
+   },
+   {
+      "is_claimed":true,
+      "rating":4.0,
+      "mobile_url":"http://m.yelp.com/biz/83-proof-san-francisco",
+      "rating_img_url":"http://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+      "review_count":659,
+      "name":"83 Proof",
+      "rating_img_url_small":"http://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+      "url":"http://www.yelp.com/biz/83-proof-san-francisco",
+      "is_closed":false,
+      "phone":"4152968383",
+      "snippet_text":"Ok. Just best place in S.F. to have a drink. You just come in, and believe me, don't ask for a mojito. Just ask for something LIKE a mojito. You will have a...",
+      "image_url":"http://s3-media2.fl.yelpcdn.com/bphoto/QrCqdMJoT7TltZRbCvoP6Q/ms.jpg",
+      "snippet_image_url":"http://s3-media4.fl.yelpcdn.com/photo/9s3fA_HBM3WV6hs--8ODlA/ms.jpg",
+      "display_phone":"+1-415-296-8383",
+      "rating_img_url_large":"http://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+      "id":"83-proof-san-francisco",
+      "categories":[
+         [
+            "Bars",
+            "bars"
+         ]
+      ],
+      "location":{
+         "cross_streets":"Elim St & Mission St",
+         "city":"San Francisco",
+         "display_address":[
+            "83 1st St",
+            "Financial District",
+            "San Francisco, CA 94105"
+         ],
+         "geo_accuracy":8.0,
+         "neighborhoods":[
+            "Financial District",
+            "SoMa"
+         ],
+         "postal_code":"94105",
+         "country_code":"US",
+         "address":[
+            "83 1st St"
+         ],
+         "coordinate":{
+            "latitude":37.7900352,
+            "longitude":-122.3976669
+         },
+         "state_code":"CA"
+      }
+   }
+]
