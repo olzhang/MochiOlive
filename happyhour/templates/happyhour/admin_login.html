@@ -1,18 +1,46 @@
 {% block content %}
 
-<nav class="navbar navbar-default navbar-fixed-top mochi-olive-border">
-      <img class="title-image navbar-image" src="/static/images/mochiolive.png" title="MochiOlive Happy Hour"/>
-      <a class="navbar-brand navbar-title" href="#">MochiOlive Happy Hour Admin Login</a>
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/static/images/mochiolive.ico">
+
+  <title>MochiOlive</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/static/css/bootstrap.css" rel="stylesheet">
+  <link href="/static/css/cover.css" rel="stylesheet">
+  <link href="/static/css/signup_login.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+</head>
+<body>
+  <div class="site-wrapper">
+    <div class="site-wrapper-inner">
+      <div class="cover-container">
+        <div class="masthead clearfix">
+          <div class="inner">
+            <h3 class="masthead-brand">MochiOlive</h3>
+            <nav>
+              <ul class="nav masthead-nav">
+                <li class="active"><a href="/">Home</a></li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        {% if form.errors %}
+        <img src="/static/images/test6.jpg" class="blur">
+        <div class="wrapper">
+          <div id="loginForm">
+            <div class="main">
+              <div class="header">
+                <h1>Admin Login Here</h1>
+              </div>
+              {% if form.errors %}
             {% for field in form %}
                 {% for error in field.errors %}
                       <p>{{error}}</p>
@@ -22,29 +50,37 @@
                 <p>{{error}}</p>
             {% endfor %}
         {% endif %}
-<link rel="icon" href="/static/images/mochiolive.ico">
-<link href="/static/css/bootstrap.css" rel="stylesheet">
-<script src="/static/js/bootstrap.js"></script>
-
-<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+                   <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
 {% csrf_token %}
-<table id="form">
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
-
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="/admin/dashboard/" />
+ <div>
+                 <ul style="list-style:none;">
+                  <li>
+                  {{ form.username.label_tag }}
+                  {{ form.username }}
+                  </li>
+                  <li>
+                  {{ form.password.label_tag }}
+                  {{ form.password }}
+                  </li>
+                  <li></li>
+                  <input type="submit" value="login" />
+                  <input type="hidden" name="next" value="/admin/dashboard/" />
+                  </ul>
+                </div>
 </form>
 
-      </div>
-    </nav>
+            </div>
+    </div>
 
-
-{% endblock %}
+  </div>
+</div>
+<!-- end:Main Form -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  </body>
+  {% endblock %}
+ 
