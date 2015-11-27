@@ -8,11 +8,7 @@ TODO: For testing locally, the web-url and call back for twitter is pointed to 1
 Need to change this in times of deployment
 
 #### API Endpoints: 
-- Adding a restaurant and getting all restaurants: 
-GET, POST: <host url>/v1/restaurants/
-
-- Relating to individual restaurants specified by primary key: 
-GET, PUT, DELETE: <host url>/v1/restaurants/<primary key>/
+- Refer to: https://github.com/CPSC310-2015W1/MochiOlive/wiki/RESTful-Design-Principle-Incorporation
 
 
 #### Yelp Client Usage
