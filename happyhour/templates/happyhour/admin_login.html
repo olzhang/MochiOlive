@@ -1,18 +1,13 @@
 {% block content %}
-
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="/static/images/mochiolive.ico">
-
   <title>MochiOlive</title>
-
   <!-- Bootstrap core CSS -->
   <link href="/static/css/bootstrap.css" rel="stylesheet">
   <link href="/static/css/cover.css" rel="stylesheet">
@@ -21,66 +16,66 @@
 </head>
 <body>
   <div class="site-wrapper">
-    <div class="site-wrapper-inner">
-      <div class="cover-container">
-        <div class="masthead clearfix">
-          <div class="inner">
-            <h3 class="masthead-brand">MochiOlive</h3>
-            <nav>
-              <ul class="nav masthead-nav">
-                <li class="active"><a href="/">Home</a></li>
-              </ul>
-            </nav>
+  <div class="site-wrapper-inner">
+  <div class="cover-container">
+    <div class="masthead clearfix">
+      <div class="inner">
+        <h3 class="masthead-brand">MochiOlive</h3>
+        <nav>
+          <ul class="nav masthead-nav">
+            <li class="active"><a href="/">Home</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <img src="/static/images/test6.jpg" class="blur">
+    <div class="wrapper">
+      <div id="loginForm">
+        <div class="main">
+          <div class="header">
+            <h1>Admin Login Here</h1>
           </div>
-        </div>
-        <img src="/static/images/test6.jpg" class="blur">
-        <div class="wrapper">
-          <div id="loginForm">
-            <div class="main">
-              <div class="header">
-                <h1>Admin Login Here</h1>
-              </div>
-              {% if form.errors %}
-            {% for field in form %}
+          {% if is_not_staff %}
+            <p>You're not an admin!</p>
+          {% else %}
+            {% if form.errors %}
+              {% for field in form %}
                 {% for error in field.errors %}
-                      <p>{{error}}</p>
+                  <p>{{error}}</p>
                 {% endfor %}
-            {% endfor %}
-            {% for error in form.non_field_errors %}
+              {% endfor %}
+              {% for error in form.non_field_errors %}
                 <p>{{error}}</p>
-            {% endfor %}
-        {% endif %}
-                   <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
-{% csrf_token %}
- <div>
-                 <ul style="list-style:none;">
-                  <li>
+              {% endfor %}
+            {% endif %}
+          {% endif %}
+          <form method="post" action="/login/admin/">
+            {% csrf_token %}
+            <div>
+              <ul style="list-style:none;">
+                <li>
                   {{ form.username.label_tag }}
                   {{ form.username }}
-                  </li>
-                  <li>
+                </li>
+                <li>
                   {{ form.password.label_tag }}
                   {{ form.password }}
-                  </li>
-                  <li></li>
-                  <input type="submit" value="login" />
-                  <input type="hidden" name="next" value="/admin/dashboard/" />
-                  </ul>
-                </div>
-</form>
-
+                </li>
+                <li></li>
+                <input type="submit" value="login" />
+              </ul>
             </div>
+          </form>
+        </div>
+      </div>
     </div>
-
   </div>
-</div>
-<!-- end:Main Form -->
-    <!-- Bootstrap core JavaScript
+  <!-- end:Main Form -->
+  <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  </body>
-  {% endblock %}
- 
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="/static/js/bootstrap.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+</body>
+{% endblock %}

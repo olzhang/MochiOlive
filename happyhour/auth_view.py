@@ -6,18 +6,19 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView, View
 from forms import RegistrationForm
+from django.shortcuts import render
 
 class Login(FormView):
 
     form_class = AuthenticationForm 
     template_name = "happyhour/user_login.html"
+    redirect_to = settings.LOGIN_REDIRECT_URL 
 
     def form_valid(self, form):
-        redirect_to = settings.LOGIN_REDIRECT_URL
         auth_login(self.request, form.get_user())
         if self.request.session.test_cookie_worked():
             self.request.session.delete_test_cookie()
-        return HttpResponseRedirect(redirect_to)
+        return HttpResponseRedirect(self.redirect_to)
 
     def form_invalid(self, form):
         return self.render_to_response(
@@ -27,6 +28,27 @@ class Login(FormView):
     def dispatch(self, request, *args, **kwargs):
         request.session.set_test_cookie()
         return super(Login, self).dispatch(request, *args, **kwargs)
+
+class AdminLogin(Login):
+
+    form_class = Login.form_class
+    template_name = "happyhour/admin_login.html"
+    redirect_to = settings.LOGIN_REDIRECT_URL_ADMIN
+
+    def form_valid(self, form):
+        if form.cleaned_data['username'] != "mochiolive_admin":
+            return render(self.request, self.template_name, {'is_not_staff': True, 'form': form})
+        return super(AdminLogin, self).form_valid(form)    
+
+    def form_invalid(self, form):
+        if form.cleaned_data['username'] != "mochiolive_admin":
+            return render(self.request, self.template_name, {'is_not_staff': True, 'form': form})
+        return super(AdminLogin, self).form_invalid(form)
+
+    @method_decorator(sensitive_post_parameters('password'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(AdminLogin, self).dispatch(request, *args, **kwargs)
+
 
 class Logout(View):
     def get(self, request, *args, **kwargs):
