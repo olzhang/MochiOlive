@@ -33,6 +33,12 @@ class RestaurantList(APIView):
             return Response(request.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def put(self, request, format=None):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, format=None):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
 class RestaurantDetail(APIView):
     """
     GET: get specific restaurant based on id
@@ -63,6 +69,9 @@ class RestaurantDetail(APIView):
         restaurant.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+    def post(self, request, pk, format=None):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
 class UserFavoritesList(APIView):
     """
     GET: list all favorite restaurants of a user
@@ -84,13 +93,29 @@ class UserFavoritesList(APIView):
             return Response(request.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def put(self, request, user, format=None):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, user, format=None):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
 class UserFavoritesDetail(APIView):
     """
+    GET: get a favorite restaurant of a user
     DELETE: delete a favorite restaurant of a user
     """
-    def delete(self, request, user, restaurant, format=None):
-        print "trying to unfavorite"
+    def get(self, request, user, restaurant, format=None):
         favorite = Favorites.objects.get(user=user, restaurant=restaurant)
-        print favorite
+        serializer = FavoriteSerializer(favorite)
+        return Response(serializer.data)
+
+    def delete(self, request, user, restaurant, format=None):
+        favorite = Favorites.objects.get(user=user, restaurant=restaurant)
         favorite.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def post(self, request, user, restaurant, format=None):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request, user, restaurant, format=None):
+        return Response(status=status.HTTP_400_BAD_REQUEST)
