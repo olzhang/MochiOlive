@@ -1,7 +1,5 @@
 import unittest
-from django.test import TestCase
 from happyhour.yelp_client import TranslatePostYelp
-from happyhour.models import Restaurant
 
 import json
 
