@@ -152,7 +152,7 @@ function renderCurrentPosition(){
 }
 
 function calcRoute(){
-	calculateAndDisplayRoute(directionsService, directionsDisplay, latlng);
+	calculateAndDisplayRouteForFavorites(directionsService, directionsDisplay, latlng);
 }
 
 
