@@ -58,10 +58,16 @@ window.onload = function() {
   if(prev_infowindow == infowindow) {
     prev_infowindow.close();
     prev_infowindow = null;
+    if(typeof prev_marker !== 'undefined'){
+      cluster.addMarker(prev_marker);
+      prev_marker = undefined;
+      return;
+    }
   }
-  if(typeof prev_marker !== 'undefined'){
-    cluster.addMarker(prev_marker);
-  }
+    if(typeof prev_marker !== 'undefined'){
+      cluster.addMarker(prev_marker);
+    }
+
   infowindow.open(map, currentMarker);
   prev_infowindow = infowindow;
   prev_marker = currentMarker;
