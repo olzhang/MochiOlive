@@ -6,7 +6,7 @@ from happyhour.models import Restaurant
 import json
 
 def test_parser_empty():
-    with open("happyhour/sample_empty.json") as data_file:
+    with open("happyhour/json-test-files/sample_empty.json") as data_file:
         empty_data = json.load(data_file)
     post_yelp = TranslatePostYelp()
     for restaurant in empty_data:
@@ -26,7 +26,7 @@ def test_parser_check_data_helper(data):
 
 class ParserTestCase(unittest.TestCase):
     def setUp(self):
-        self.root = "happyhour/"
+        self.root = "happyhour/json-test-files/"
         with open(self.root + "sample.json") as data_file:
             self.good_data = json.load(data_file)
         with open(self.root + "sample_missing_param.json") as data_file:
@@ -50,7 +50,7 @@ class ParserTestCase(unittest.TestCase):
             test_parser_check_data_helper(self.incomplete_data)
 
     # test with empty data file
-    # should raise exception since there is no json data. 
+    # should raise exception since there is no json data.
     def test_parser_empty_data(self):
         with self.assertRaises(ValueError):
             test_parser_empty()
