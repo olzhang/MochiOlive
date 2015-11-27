@@ -70,17 +70,17 @@ class TranslatePostYelp(object):
 		:param restaurant: data for restaurant
 		:return: formatted data of restaurant
 		"""
-		name = restaurant['name']
-		address_list = restaurant['location']['display_address']
-		address = " ".join(address_list)
-		if 'phone' in restaurant:
-			phone_number = restaurant['phone']
+		name = self.check_key('name', restaurant)
+		address_list = self.check_key('display_address', restaurant['location'])
+		if address_list is not None:
+			address = " ".join(address_list)
 		else:
-			phone_number = None
-		rating = restaurant['rating']
-		location_lat = restaurant['location']['coordinate']['latitude']
-		location_long = restaurant['location']['coordinate']['longitude']
-		image_url = restaurant['image_url']
+			address = None
+		phone_number = self.check_key('phone', restaurant)
+		rating = self.check_key('rating', restaurant)
+		location_lat = self.check_key('latitude', restaurant['location']['coordinate'])
+		location_long = self.check_key('longitude', restaurant['location']['coordinate'])
+		image_url = self.check_key('image_url', restaurant)
 		data = {'name': name, 'address': address, 'phone_number': phone_number,
 				'rating': str(rating), 'location_lat': str(location_lat), 'location_long': str(location_long),
 				'image_url': image_url}
@@ -98,6 +98,12 @@ class TranslatePostYelp(object):
 			return True
 		else:
 			return False
+
+	def check_key(self, name, restaurant):
+		if name in restaurant:
+			return restaurant[name]
+		else:
+			return None
 
 def main():
 	client = YelpClient()
