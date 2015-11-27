@@ -86,6 +86,9 @@ function bindInfoWindow(marker, map, infowindow, restaurant, latlng) {
         }
         prev_infowindow = infowindow;
         infowindow.open(map, marker);
+        if (directionsDisplay.getMap() != null) {
+            removeRoute();
+          } 
     });
 
     google.maps.event.addListener(map, 'click', function() {
@@ -249,6 +252,7 @@ function calculateAndDisplayRouteForFavorites(directionsService, directionsDispl
     window.alert('Your position has not been set yet, please wait');
     return;
   } 
+
   directionsService.route({
     origin: myLatLng,
     destination: end,
