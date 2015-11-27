@@ -88,11 +88,12 @@ function bindInfoWindow(marker, map, infowindow, restaurant, latlng) {
         infowindow.open(map, marker);
         if (directionsDisplay.getMap() != null) {
             removeRoute();
-          } 
+          }
     });
 
     google.maps.event.addListener(map, 'click', function() {
         infowindow.close();
+        prev_infowindow = null;
     });
 
     /* This will likely be needed if we want to customize the ui of indowindow more
@@ -117,7 +118,7 @@ return(
           '<span class="col">Phone : </span>'+ restaurant.phone_number + '<br>' +
           '<span class="col">Rating : </span>'+restaurant.rating +
       '</p>'+
-    '</div>' + favoritesButton + routeButton + tweetButton + 
+    '</div>' + favoritesButton + routeButton + tweetButton +
   '</div>');
 }
 
@@ -125,40 +126,40 @@ function setFavButton(restaurant){
   var favoritesButton;
   if(typeof userId !== 'undefined'){
     if (restaurants.indexOf(restaurant.id) > -1){
-      favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id + 
+      favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id +
           '" type="button" class="btn btn-favorites btn-favorited" onclick="deleteUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
-          '<span class="glyphicon glyphicon-ok"></span><span>  </span><span id="btn-text">Favorited</span>' + '</button>' + 
+          '<span class="glyphicon glyphicon-ok"></span><span>  </span><span id="btn-text">Favorited</span>' + '</button>' +
           '</div>';
     }
     else {
-      favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id + 
+      favoritesButton = '<div class="btn-group favorites-map">' + '<button id="map-fav-' + restaurant.id +
         '" type="button" class="btn btn-favorites" onclick="addUserFavorite(this.id, userId, ' + restaurant.id + ')">' +
-        '<span class="glyphicon glyphicon-plus"></span><span>  </span><span id="btn-text">Favorite</span>' + '</button>' + 
+        '<span class="glyphicon glyphicon-plus"></span><span>  </span><span id="btn-text">Favorite</span>' + '</button>' +
         '</div>';
     }
   }
-  else { 
-    favoritesButton = ''; 
+  else {
+    favoritesButton = '';
   }
   return favoritesButton;
 }
 
 function setRouteButton(latlng){
     var routeDiv;
-      routeDiv =  '<div class="btn-group favorites-map">' + 
+      routeDiv =  '<div class="btn-group favorites-map">' +
                     '<button id="route_btn"' +
                         'type="button" class="btn btn-favorites"' +
                         'onclick="toggleRoute(directionsService, directionsDisplay, currentMarkerLatlng)">' +
                         '<span class="glyphicon glyphicon-globe"></span>' +
                         '<span id="btn-text"> Plot direction </span>' +
-                      '</button>' + 
+                      '</button>' +
                     '</div>';
   return routeDiv;
 }
 
 function setTweetButton(restaurant){
   var tweetDiv;
-    tweetDiv = '<div class="btn-group favorites-map">' + 
+    tweetDiv = '<div class="btn-group favorites-map">' +
                     '<a href="https://twitter.com/intent/tweet?button_hashtag=MochiOliveHappyHour&text=My%20Happy%20Hour%20experience%20at ' + restaurant.name +'" class="btn btn-favorites">' + '<span class="glyphicon glyphicon-comment"></span>' +
                      '<span id="btn-text"> Tweet my experience </span>' + '</a>' +
               '</div>';
@@ -218,7 +219,7 @@ function toggleRoute(directionsService, directionsDisplay, end) {
   if (directionsDisplay.getMap() != null) {
     removeRoute();
   } else {
-    calculateAndDisplayRoute(directionsService, directionsDisplay, end); 
+    calculateAndDisplayRoute(directionsService, directionsDisplay, end);
   }
 }
 
@@ -230,7 +231,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, end) {
   if (myLatLng == null) {
     window.alert('Your position has not been set yet, please wait');
     return;
-  } 
+  }
   directionsDisplay.setMap(map);
   directionsService.route({
     origin: myLatLng,
@@ -251,7 +252,7 @@ function calculateAndDisplayRouteForFavorites(directionsService, directionsDispl
   if (myLatLng == null) {
     window.alert('Your position has not been set yet, please wait');
     return;
-  } 
+  }
 
   directionsService.route({
     origin: myLatLng,
