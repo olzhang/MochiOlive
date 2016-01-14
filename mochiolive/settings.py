@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'mochiolive.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mochiolivedb',
-        'USER': 'mochi',
-        'PASSWORD': 'm0chi0live',
-        'HOST': 'mochiolive.cooz3ixbg1re.us-west-2.rds.amazonaws.com',
+        'NAME': '',                                      # access passwords and urls removed 
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '3306',
     }
 }

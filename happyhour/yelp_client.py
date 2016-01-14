@@ -8,13 +8,13 @@ import json
 # should write out json into data.json 
 
 keys = {
-	'CONSUMER_KEY': '3KcyyCeF3C1EzYV9Vdy1Lw',
-	'CONSUMER_SECRET': 'snYRK3XtH1sOgJfE_8jSgA87Hrc',
-	'TOKEN': 'SUyn4b1-la_pvrngf_HIhjiLiwdTDrY3',
-	'TOKEN_SECRET': 'QBXSiN0Eqsaq-Xc5o0-MpVT03r4',
+	'CONSUMER_KEY': '',                  # access tokens removed for security purposes
+	'CONSUMER_SECRET': '',
+	'TOKEN': '',
+	'TOKEN_SECRET': '',
 }
 
-webapp_url = "http://ec2-52-24-217-78.us-west-2.compute.amazonaws.com:8000"
+webapp_url = ""                          # web app url removed
 api_post_url = "/v1/restaurants/"
 
 
