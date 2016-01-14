@@ -1,4 +1,4 @@
-Project Title: MochiOlive Happy Hour (MOHH)
+### Project Title: MochiOlive Happy Hour (MOHH)
 
 Our web application allows Vancouverites to locate establishments in the city that offer "Happy Hours", which are specific times in the week or day when restaurants or bars offer discounted food and beverages.
 
