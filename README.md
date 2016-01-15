@@ -1,5 +1,8 @@
 ### Project Title: MochiOlive Happy Hour (MOHH)
 
+#### Demo
+[Demo](http://ec2-54-213-123-63.us-west-2.compute.amazonaws.com:8000/)
+
 Our web application allows Vancouverites to locate establishments in the city that offer "Happy Hours", which are specific times in the week or day when restaurants or bars offer discounted food and beverages.
 
 To achieve this functionality, we intend to provide the web app's users with a map that plots the locations of these happy hour establishments as well as a table that displays their name, ratings, and other attributes. The data for the restaurants or bars will come from the Yelp API. In addition, we will implement a sign-in system that allows the user to log into our app through their Twitter account or an account they can create in the app. By signing into their account, the user will be able to save their favourite happy hour places in a list and tweet about their happy hour experience through our app.
