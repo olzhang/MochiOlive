@@ -1,7 +1,7 @@
 ### Project Title: MochiOlive Happy Hour (MOHH)
 
 #### Demo
-[Demo](http://ec2-54-213-123-63.us-west-2.compute.amazonaws.com)
+[Demo](http://ec2-54-213-123-63.us-west-2.compute.amazonaws.com:8000)
 
 Our web application allows Vancouverites to locate establishments in the city that offer "Happy Hours", which are specific times in the week or day when restaurants or bars offer discounted food and beverages.
 
